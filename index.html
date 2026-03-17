@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ro"> <!--task 1-->
+
+<head> <!--task 2 4(favicon) si 3(cuvintele sunt in cod)-->
+    <meta charset="UTF-8">
+    <meta name="author" content="Cirstea Constantin-Valentin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Echipamente F1 originale pentru fanii adevărați. Trăiește adrenalina circuitului cu produsele echipelor tale favorite.">
+    <meta name="keywords" content="F1, motorsport, echipamente, masini, curse, viteza, echipe, tricou, casca">
+    <title>F1 Apex Gear</title>
+    <link rel="icon" type="image/png" href="./resurse/ico/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="./resurse/ico/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="./resurse/ico/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./resurse/ico/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="./resurse/ico/favicon/site.webmanifest" />
+    <link rel="stylesheet" type="text/css" href="resurse/css/general.css" />
+    <link rel="stylesheet" type="text/css" href="resurse/css/nav.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1>F1 Apex Gear</h1>
+        <nav> <!--nav task 8-->
+            <ul>
+                <li><a href="index.html">Acasă</a>
+                    <ul>
+                        <li><a href="#welcome">Despre noi</a></li>
+                        <li><a href="#promotii">Oferte</a></li>
+                        <li><a href="#anunturi">Evenimente</a></li>
+                    </ul>
+                </li>
+                <li><a href="#faq-echipamente">Echipamente</a></li>
+                <li><a href="#program-echipa">Program Magazin</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main> <!--  comentariu -->
+        <div id="grid-pagina">
+
+            <section id="welcome">
+                <hgroup> <!--task 7 hgroup-->
+                    <h2>Bine ați venit la F1 Apex Gear</h2>
+                    <p class="subtitlu">Excelență și viteză în fiecare detaliu</p>
+                </hgroup>
+
+                <p class="intro">Suntem destinația principală pentru entuziaștii motorsportului, oferind produse
+                    autentice de la cele mai mari echipe de curse.</p>
+
+                <blockquote cite="https://www.formula1.com"> <!--task 9 blockquote si dl mai jos-->
+                    "Viteza este o formă de artă, iar circuitul este pânza noastră pe care pictăm performanța."
+                </blockquote>
+
+                <dl>
+                    <dt><b>Aerodinamică</b></dt>
+                    <dd>Studiul mișcării aerului în jurul mașinilor de cursă pentru a maximiza viteza.</dd>
+
+                    <dt><b>Downforce</b></dt>
+                    <dd>Forța care apasă mașina pe pistă, permițând viraje la viteze uluitoare.</dd>
+                </dl>
+
+                <!--task 11 figure si picture-->
+                <section id="galerie-foto">
+                    <h2>Echipament în detaliu</h2>
+                    <figure title="Vizualizare detaliată a combinezonului oficial F1">
+                        <picture>
+                            <source media="(max-width: 600px)" srcset="./resurse/imagini/costum1.jpg">
+                            <source media="(min-width: 601px) and (max-width: 1024px)"
+                                srcset="./resurse/imagini/costum2.jpg">
+                            <img src="./resurse/imagini/costum3.jpg" alt="Imagine detaliată costum pilot F1">
+                        </picture>
+                        <figcaption>Fig 1. Detalii tehnice ale materialului ignifug folosit în sezonul 2026.
+                        </figcaption>
+                    </figure>
+                </section>
+
+            </section>
+
+
+
+            <section id="promotii">
+                <h2>Promoții și oferte</h2>
+                <!--  task 12 e f g   si 6 section-->
+                <article>
+                    <h3 class="titlu">Reduceri Echipamente 2026</h3>
+                    <p>Macheta oficială Red Bull este acum <s>500 RON</s> <ins>420 RON</ins>!</p>
+                    <p>Toate produsele noastre sunt certificate de <abbr
+                            title="Federația Internațională de Automobilism">FIA</abbr>.</p>
+                    <p><dfn title="Sistem de reducere a forței de rezistență la înaintare">DRS</dfn>-ul este un mecanism
+                        utilizat pentru a mări viteza de rulare pe liniile drepte.</p>
+                </article>
+            </section>
+
+
+            <section id="utilizatori-online">
+                <h2>
+                    <i class="fas fa-users"></i> Fani pe Circuit
+                </h2>
+                <p>
+                    <i class="fa-solid fa-stopwatch fa-beat"></i> Utilizatori activi în timp real: 1,240
+                </p>
+            </section>
+
+            <section id="status-server">
+                <h2>Status Sistem</h2>
+                <p>Server: <span style="color: #00ff00;">Optim</span></p>
+
+
+            </section>
+
+
+            <!--task 15-->
+
+            <section id="program-echipa">
+                <h2>Programul Echipei de Suport Apex Gear</h2>
+                <div class="tabel-container">
+                    <table>
+                        <caption>Disponibilitatea tehnicienilor și a showroom-ului pentru sezonul 2026</caption>
+
+                        <thead>
+                            <tr>
+                                <th>Departament</th>
+                                <th>Responsabil</th>
+                                <th>Zile Lucrătoare</th>
+                                <th>Interval Orar</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td rowspan="2">Showroom & Vânzări</td>
+                                <td>Echipa Alfa</td>
+                                <td>Luni - Miercuri</td>
+                                <td>09:00 - 18:00</td>
+                            </tr>
+                            <tr>
+                                <td>Echipa Beta</td>
+                                <td>Joi - Vineri</td>
+                                <td>09:00 - 18:00</td>
+                            </tr>
+                            <tr>
+                                <td>Suport Tehnic</td>
+                                <td>Admin Web</td>
+                                <td>Sâmbătă</td>
+                                <td>10:00 - 14:00</td>
+                            </tr>
+                            <tr>
+                                <td>Logistică</td>
+                                <td>Depozit Central</td>
+                                <td>Luni - Vineri</td>
+                                <td>08:00 - 17:00</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">Echipa de Intervenție Rapidă</td>
+                                <td>Duminică</td>
+                                <td>Online 24/7</td>
+                            </tr>
+
+                        </tbody>
+
+                        <tfoot>
+                            <tr>
+                                <td colspan="4">Notă: Programul poate varia în funcție de fusul orar al fiecărui Mare
+                                    Premiu
+                                    (Grand Prix).</td>
+                            </tr>
+
+                        </tfoot>
+                    </table>
+                </div>
+            </section>
+
+
+
+            <section id="anunturi"> <!--task 10 time si b-->
+                <h2>Evenimente F1</h2>
+                <ul>
+                    <li>
+                        Pe data de <time datetime="2026-03-07">7 martie 2025</time>, va avea loc <b>Marea Lansare a
+                            Colecției de Iarnă</b>.
+                    </li>
+
+                    <li>
+                        Înscrierile pentru <b>Sesiunea de Simulator</b> încep pe <time datetime="2026-03-15T10:00">15
+                            martie 2026, la ora 10:00</time>.
+                    </li>
+
+                    <li>
+                        <time datetime="2026-05-01">1 mai 2026</time>: <b>Meet & Greet cu Piloții</b> - Vino să cunoști
+                        legendele circuitului!
+                    </li>
+                </ul>
+            </section>
+
+            <!--task 16-->
+            <section id="faq-echipamente">
+                <h2>Întrebări Frecvente Apex Gear</h2>
+                <details>
+                    <summary>Cum aleg mărimea potrivită pentru combinezon?</summary>
+                    <p>Vă recomandăm să consultați ghidul nostru de mărimi oficial. Combinezoanele sunt croite pe
+                        corp pentru a asigura o aerodinamică optimă.</p>
+                </details>
+                <details>
+                    <summary>Produsele sunt omologate de FIA?</summary>
+                    <p>Da, toate echipamentele noastre de protecție (căști, combinezoane, mănuși) vin cu
+                        certificarea oficială pentru sezonul 2026.</p>
+                </details>
+            </section>
+
+
+            <!--task 17-->
+            <section id="statistici-magazin">
+                <h2>Disponibilitate și Stocuri</h2>
+                <p>Stoc Căști Ediție Limitată:
+                    <meter value="12" min="0" max="100" low="25" high="75" optimum="90">12%</meter>
+                    <span>(Stoc critic!)</span>
+                </p>
+                <p>Nivel Cerere Machete 2026:
+                    <meter value="88" min="0" max="100" low="30" high="70" optimum="85">88%</meter>
+                    <span>(Cerere ridicată)</span>
+                </p>
+            </section>
+
+
+        </div>
+
+        <!--  task 14  video-->
+        <section id="zona-video">
+            <h2>Tehnologie și Curse F1</h2>
+
+            <div id="video-links">
+                <a href="https://www.youtube.com/embed/uKD9C3b8M2A" target="ifr-video">Prezentare Motor</a> |
+                <a href="https://www.youtube.com/embed/ZFEzMKYjShc?si=XIonvTIvyRRe40wK" target="ifr-video">Aerodinamică
+                    2026</a> |
+                <a href="https://www.youtube.com/embed/mdnF9R-Bzpg?si=_ifU8B9puv3bzLmm" target="ifr-video">Reîncărcare
+                    Video Default</a>
+            </div>
+            <br>
+
+            <iframe name="ifr-video" width="560" height="315"
+                src="https://www.youtube.com/embed/mdnF9R-Bzpg?si=_ifU8B9puv3bzLmm" title="F1 Apex Gear Video Player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </section>
+
+
+
+        <!--  task 13 link uri plus footer la final -->
+        <section id="resurse-f1">
+            <h2>Resurse și Link-uri Utile</h2>
+            <ul>
+                <li>Vezi noutăți pe <a href="https://www.formula1.com" target="_blank">Site-ul Oficial F1</a>.</li>
+                <li>Regulament tehnic: <a
+                        href="https://www.fia.com/regulations#technical-rules">https://www.fia.com/regulations<wbr>#technical-rules</a>.
+                </li>
+                <li>Vizualizează produsul vedetă:
+                    <a href="./resurse/imagini/tricou.jpg">
+                        <img src="./resurse/imagini/favicon/favicon-96x96.png" alt="Miniatura produs"
+                            style="width:40px;">
+                    </a>
+                </li>
+
+                <li>Descarcă oferta curentă: <a href="./resurse/imagini/tricou2.jpg"
+                        download="Oferta_Apex_Gear.jpg">Imagine Oferta (Download)</a></li>
+            </ul>
+        </section>
+
+        <!--task bonus 1 formula-->
+        <section id="fizica-tehnica">
+            <h3>Fizica Performanței</h3>
+            <p>Calculul forței necesare pentru a menține mașina pe trasă în viraje:</p>
+
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                <msub>
+                    <mi>F</mi>
+                    <mi>c</mi>
+                </msub>
+                <mo>=</mo>
+                <mfrac>
+                    <mrow>
+                        <mi>m</mi>
+                        <mo>&#x22C5;</mo>
+                        <msup>
+                            <mi>v</mi>
+                            <mn>2</mn>
+                        </msup>
+                    </mrow>
+                    <mi>r</mi>
+                </mfrac>
+            </math>
+
+            <ul>
+                <li><strong>m</strong> - masa monopostului</li>
+                <li><strong>v</strong> - viteza de rulare</li>
+                <li><strong>r</strong> - raza virajului</li>
+            </ul>
+        </section>
+
+
+    </main>
+
+    <!--task 18 si 19-->
+    <footer>
+        <address>
+            <strong>F1 Apex Gear HQ</strong><br>
+
+            Telefon: <a href="tel:+40722000000">0722 000 000</a><br>
+
+            Locație: <a
+                href="https://www.google.com/maps/place/Politehnica+Business+Tower/@44.4340857,26.0382199,17z/data=!3m1!4b1!4m6!3m5!1s0x40b201f609995a6f:0x8a7b024778b7d337!8m2!3d44.4340819!4d26.0407948!16s%2Fg%2F11h5lv2n9y?entry=ttu&g_ep=EgoyMDI2MDMwMi4wIKXMDSoASAFQAw%3D%3D"
+                target="_blank">
+                PB Tower
+            </a><br>
+
+            E-mail: <a href="mailto:contact@f1apexgear.ro">contact@f1apexgear.ro</a><br>
+
+            Contact Rapid: <a href="https://wa.me/40722000000">Chat pe WhatsApp</a>
+        </address>
+
+        <hr>
+
+        <p>
+            <small>Copyright &copy; 2026 F1 Apex Gear.
+                Pagina creată la data de: <time datetime="2026-03-05">5 Martie 2026</time>.</small>
+        </p>
+        <a href="#" id="link-top">
+            <div id="cerc-exterior">
+                <div id="triunghi-gol">&#9651;</div>
+            </div>
+            <span class="tooltip-text">Mergi sus</span>
+        </a>
+
+    </footer>
+
+
+</body>
+
+</html>

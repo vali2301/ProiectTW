@@ -1,0 +1,399 @@
+/*task schema-cromatica*/
+body {
+    --culoare-fundal: #15151e;
+    --culoare-text: #f3f3f3;
+    --culoare-accent: #0782ab;
+    --culoare-contur: #38383f;
+    --culoare-highlight: #ffffff;
+
+    /*a*/
+    --spatiere-pagina: 100px;
+    margin-left: var(--spatiere-pagina);
+    margin-right: var(--spatiere-pagina);
+
+
+
+    background-color: var(--culoare-fundal);
+    color: var(--culoare-text);
+
+    font-family: 'Exo 2', sans-serif;
+    /*pentru icon*/
+}
+
+
+h1,
+h2,
+h3 {
+    color: var(--culoare-accent);
+}
+
+section,
+article {
+    border: 1px solid var(--culoare-contur);
+}
+
+a {
+    color: var(--culoare-accent);
+}
+
+a:hover {
+    color: var(--culoare-highlight);
+}
+
+#grid-pagina>* {
+    border: 1px solid var(--culoare-contur);
+    box-shadow: 0px 0px 5px var(--culoare-accent);
+}
+
+
+
+
+/*task layout*/
+
+
+#grid-pagina {
+    display: grid;
+    /*b*/
+    --grid-gap: 20px;
+    gap: var(--grid-gap);
+
+
+    grid-template-columns: 1fr 2fr 1fr 1fr;
+    grid-template-areas:
+        "z1 z1 z1 z1"
+        "z3 z2 z2 z4"
+        "z5 z2 z2 z4"
+        "z5 z6 z6 z7"
+        "z8 z8 z8 z8";
+}
+
+
+#welcome {
+    grid-area: z1;
+}
+
+#program-echipa {
+    grid-area: z2;
+}
+
+#anunturi {
+    grid-area: z3;
+}
+
+#promotii {
+    grid-area: z4;
+}
+
+#utilizatori-online {
+    grid-area: z5;
+}
+
+#statistici-magazin {
+    grid-area: z6;
+}
+
+#status-server {
+    grid-area: z7;
+}
+
+#faq-echipamente {
+    grid-area: z8;
+}
+
+
+#grid-pagina>* {
+    min-width: 0;
+    overflow: hidden;
+}
+
+
+@media screen and (max-width: 1000px) {
+    #grid-pagina {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "z1 z1"
+            "z2 z2"
+            "z3 z4"
+            "z5 z6"
+            "z7 z7"
+            "z8 z8";
+    }
+
+    body {
+        font-size: 0.95rem;
+        transition: font-size 0.5s linear;
+    }
+}
+
+
+@media screen and (max-width: 700px) {
+    #grid-pagina {
+        display: block;
+    }
+
+    #grid-pagina>section {
+        margin-bottom: 15px;
+    }
+
+    body {
+        font-size: 0.85rem;
+    }
+
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+
+/*c*/
+header,
+footer,
+#grid-pagina>section {
+    padding: 20px;
+    /*d*/
+    background-color: #1a1a24;
+    border: 1px solid var(--culoare-contur);
+    box-shadow: 0px 5px 15px #000000;
+    border-radius: 10px;
+}
+
+/*e*/
+img,
+iframe,
+video {
+    width: 100%;
+    max-width: 900px;
+    min-width: 200px;
+    height: auto;
+}
+
+
+
+@media screen and (max-width: 1000px) {
+    body {
+        --spatiere-pagina: 40px;
+    }
+
+    #grid-pagina {
+        --grid-gap: 15px;
+    }
+}
+
+
+@media screen and (max-width: 700px) {
+    body {
+        --spatiere-pagina: 10px;
+    }
+
+    #grid-pagina {
+        --grid-gap: 10px;
+    }
+}
+
+
+
+@keyframes bataieInima {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.3);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+#grid-pagina section i.fa-stopwatch {
+    display: inline-block !important;
+    animation: bataieInima 2s infinite !important;
+    color: var(--culoare-accent) !important;
+    margin-right: 8px;
+}
+
+
+
+/*task stilizare tabel*/
+
+.tabel-container {
+    overflow-x: auto;
+    border-radius: 15px;
+    border: 2px solid var(--culoare-contur);
+    background-color: var(--culoare-fundal);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+
+caption {
+    caption-side: bottom;
+    padding: 10px;
+    font-style: italic;
+    color: var(--culoare-text);
+}
+
+
+td:nth-child(odd) {
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+td:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.07);
+}
+
+
+tbody tr {
+    transition: background-color 0.4s linear;
+}
+
+tbody tr:hover {
+    background-color: rgba(7, 130, 171, 0.3) !important;
+}
+
+
+tbody td:hover {
+    background-color: var(--culoare-accent) !important;
+    color: white;
+}
+
+
+thead {
+    background-color: var(--culoare-accent);
+    color: white;
+}
+
+tfoot {
+    background-color: rgba(0, 0, 0, 0.5);
+    font-weight: bold;
+}
+
+th,
+td {
+    padding: 12px;
+    border: 1px solid var(--culoare-contur);
+    text-align: center;
+}
+
+
+
+
+
+/*task stilizare tab uri*/
+
+
+
+#video-links {
+    display: flex;
+    justify-content: flex-start;
+    gap: 5px;
+    padding: 0;
+    margin-top: -2px;
+}
+
+
+#video-links a {
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    color: var(--culoare-text);
+    background: linear-gradient(to bottom, var(--culoare-accent), #015d7c);
+
+
+    border-radius: 0 0 10px 10px;
+
+    border: 1px solid var(--culoare-contur);
+    border-top: none;
+
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+
+#video-links a:hover {
+    background: var(--culoare-highlight);
+    color: var(--culoare-fundal);
+    box-shadow: 0 4px 8px rgba(0, 191, 255, 0.4);
+    transform: translateY(2px);
+}
+
+
+#zona-video iframe {
+    width: 100%;
+    max-width: 560px;
+    height: 315px;
+    border: 4px solid var(--culoare-contur);
+    background-color: white;
+    display: block;
+}
+
+
+
+
+
+/*task link catre inceout*/
+
+#link-top {
+
+    position: relative !important;
+    margin-top: 20px;
+    margin-left: 0;
+
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    width: 80px;
+    text-decoration: none;
+    opacity: 0.6;
+    transition: all 0.4s ease;
+}
+
+#cerc-exterior {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border: 3px solid var(--culoare-accent);
+    border-radius: 50%;
+    background-color: var(--culoare-fundal);
+}
+
+#triunghi-gol {
+    color: var(--culoare-accent);
+    font-size: 35px;
+    font-weight: bold;
+    line-height: 1;
+    margin: 0;
+    padding: 0;
+    transform: translateY(-4px);
+}
+
+
+.tooltip-text {
+    visibility: hidden;
+    opacity: 0;
+    background-color: white;
+    color: black;
+    padding: 2px 8px;
+    font-size: 11px;
+    border: 1px solid #ccc;
+    margin-top: 5px;
+    white-space: nowrap;
+}
+
+#link-top:hover {
+    opacity: 1;
+}
+
+#link-top:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
