@@ -1,3 +1,13 @@
+/* restaurare stiluri de baza(dupa reset) */
+h1, h2, h3, b, strong {
+    font-weight: bold;
+}
+
+i, em {
+    font-style: italic;
+}
+
+
 /*task schema-cromatica*/
 body {
     --culoare-fundal: #15151e;
@@ -7,7 +17,7 @@ body {
     --culoare-highlight: #ffffff;
 
     /*a*/
-    --spatiere-pagina: 100px;
+    --spatiere-pagina: 6.25rem;
     margin-left: var(--spatiere-pagina);
     margin-right: var(--spatiere-pagina);
 
@@ -54,7 +64,7 @@ a:hover {
 #grid-pagina {
     display: grid;
     /*b*/
-    --grid-gap: 20px;
+    --grid-gap: 1.25rem;
     gap: var(--grid-gap);
 
 
@@ -150,12 +160,12 @@ a:hover {
 header,
 footer,
 #grid-pagina>section {
-    padding: 20px;
+    padding: 1.25rem;
     /*d*/
     background-color: #1a1a24;
     border: 1px solid var(--culoare-contur);
-    box-shadow: 0px 5px 15px #000000;
-    border-radius: 10px;
+    box-shadow:0 0.3125rem 0.9375rem #000000;
+    border-radius: 0.625rem;
 }
 
 /*e*/
@@ -163,7 +173,7 @@ img,
 iframe,
 video {
     width: 100%;
-    max-width: 900px;
+    max-width: 56.25rem;
     min-width: 200px;
     height: auto;
 }
@@ -172,22 +182,22 @@ video {
 
 @media screen and (max-width: 1000px) {
     body {
-        --spatiere-pagina: 40px;
+        --spatiere-pagina: 2.5rem;
     }
 
     #grid-pagina {
-        --grid-gap: 15px;
+        --grid-gap: 1.25rem;
     }
 }
 
 
 @media screen and (max-width: 700px) {
     body {
-        --spatiere-pagina: 10px;
+        --spatiere-pagina: 0.625rem;
     }
 
     #grid-pagina {
-        --grid-gap: 10px;
+        --grid-gap: 0.625rem;
     }
 }
 
@@ -212,7 +222,7 @@ video {
     display: inline-block !important;
     animation: bataieInima 2s infinite !important;
     color: var(--culoare-accent) !important;
-    margin-right: 8px;
+    margin-right: 0.5rem;
 }
 
 
@@ -221,7 +231,7 @@ video {
 
 .tabel-container {
     overflow-x: auto;
-    border-radius: 15px;
+    border-radius: 0.9375rem;
     border: 2px solid var(--culoare-contur);
     background-color: var(--culoare-fundal);
 }
@@ -234,7 +244,7 @@ table {
 
 caption {
     caption-side: bottom;
-    padding: 10px;
+    padding: 0.625rem;
     font-style: italic;
     color: var(--culoare-text);
 }
@@ -276,7 +286,7 @@ tfoot {
 
 th,
 td {
-    padding: 12px;
+    padding: 0.75rem;
     border: 1px solid var(--culoare-contur);
     text-align: center;
 }
@@ -292,7 +302,7 @@ td {
 #video-links {
     display: flex;
     justify-content: flex-start;
-    gap: 5px;
+    gap: 0.3125rem;
     padding: 0;
     margin-top: -2px;
 }
@@ -300,14 +310,14 @@ td {
 
 #video-links a {
     display: block;
-    padding: 10px 20px;
+    padding: 0.625rem 1.25rem;
     text-decoration: none;
     font-weight: bold;
     color: var(--culoare-text);
     background: linear-gradient(to bottom, var(--culoare-accent), #015d7c);
 
 
-    border-radius: 0 0 10px 10px;
+    border-radius: 0 0 0.625rem 0.625rem;
 
     border: 1px solid var(--culoare-contur);
     border-top: none;
@@ -320,7 +330,7 @@ td {
 #video-links a:hover {
     background: var(--culoare-highlight);
     color: var(--culoare-fundal);
-    box-shadow: 0 4px 8px rgba(0, 191, 255, 0.4);
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 191, 255, 0.4);
     transform: translateY(2px);
 }
 
@@ -343,13 +353,13 @@ td {
 #link-top {
 
     position: relative !important;
-    margin-top: 20px;
+    margin-top: 1.25rem;
     margin-left: 0;
 
     display: flex !important;
     flex-direction: column;
     align-items: center;
-    width: 80px;
+    width: 5rem;
     text-decoration: none;
     opacity: 0.6;
     transition: all 0.4s ease;
@@ -359,8 +369,8 @@ td {
     display: flex !important;
     align-items: center;
     justify-content: center;
-    width: 50px;
-    height: 50px;
+    width: 3.125rem;
+    height: 3.125rem;
     border: 3px solid var(--culoare-accent);
     border-radius: 50%;
     background-color: var(--culoare-fundal);
@@ -368,7 +378,7 @@ td {
 
 #triunghi-gol {
     color: var(--culoare-accent);
-    font-size: 35px;
+    font-size: 2.1875rem;
     font-weight: bold;
     line-height: 1;
     margin: 0;
@@ -382,10 +392,10 @@ td {
     opacity: 0;
     background-color: white;
     color: black;
-    padding: 2px 8px;
-    font-size: 11px;
+    padding: 0.125rem 0.5rem;
+    font-size: 0.6875rem;
     border: 1px solid #ccc;
-    margin-top: 5px;
+    margin-top: 0.3125rem;
     white-space: nowrap;
 }
 
@@ -397,3 +407,25 @@ td {
     visibility: visible;
     opacity: 1;
 }
+
+
+
+/* bonus pt mathml */
+#math-bonus {
+    font-size: 1.3rem; 
+    margin: 1.25rem 0;
+}
+
+.math-accent {
+    color: var(--culoare-accent);
+    font-weight: bold;
+}
+
+.math-highlight {
+    color: #0782ab; 
+    font-style: italic;
+    font-size: 1.5em; 
+}
+
+
+

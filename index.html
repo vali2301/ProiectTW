@@ -14,6 +14,7 @@
     <link rel="shortcut icon" href="./resurse/ico/favicon/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="./resurse/ico/favicon/apple-touch-icon.png" />
     <link rel="manifest" href="./resurse/ico/favicon/site.webmanifest" />
+    <link rel="stylesheet" type="text/css" href="resurse/css/reset.css" />
     <link rel="stylesheet" type="text/css" href="resurse/css/general.css" />
     <link rel="stylesheet" type="text/css" href="resurse/css/nav.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
@@ -270,6 +271,7 @@
 
                 <li>Descarcă oferta curentă: <a href="./resurse/imagini/tricou2.jpg"
                         download="Oferta_Apex_Gear.jpg">Imagine Oferta (Download)</a></li>
+
             </ul>
         </section>
 
@@ -278,18 +280,18 @@
             <h3>Fizica Performanței</h3>
             <p>Calculul forței necesare pentru a menține mașina pe trasă în viraje:</p>
 
-            <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" id="math-bonus">
                 <msub>
-                    <mi>F</mi>
+                    <mi class="math-accent">F</mi>
                     <mi>c</mi>
                 </msub>
                 <mo>=</mo>
                 <mfrac>
                     <mrow>
                         <mi>m</mi>
-                        <mo>&#x22C5;</mo>
+                        <mo>⋅</mo>
                         <msup>
-                            <mi>v</mi>
+                            <mi class="math-highlight">v</mi>
                             <mn>2</mn>
                         </msup>
                     </mrow>
@@ -324,11 +326,19 @@
 
             Contact Rapid: <a href="https://wa.me/40722000000">Chat pe WhatsApp</a>
         </address>
+<!--task bonus cu iframe harta-->
+        <div class="map-container" style="margin-top: 1.25rem;">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5697.69392853581!2d26.0357828942383!3d44.43630131535379!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b201f609995a6f%3A0x8a7b024778b7d337!2sPolitehnica%20Business%20Tower!5e0!3m2!1sro!2sro!4v1773833425261!5m2!1sro!2sro"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
 
         <hr>
 
         <p>
-            <small>Copyright &copy; 2026 F1 Apex Gear.
+            <small>Copyright © 2026 F1 Apex Gear.
                 Pagina creată la data de: <time datetime="2026-03-05">5 Martie 2026</time>.</small>
         </p>
         <a href="#" id="link-top">
