@@ -68,13 +68,13 @@ a:hover {
     gap: var(--grid-gap);
 
 
-    grid-template-columns: 1fr 2fr 1fr 1fr;
+    grid-template-columns: 1fr 2fr 1fr;
     grid-template-areas:
-        "z1 z1 z1 z1"
-        "z3 z2 z2 z4"
-        "z5 z2 z2 z4"
-        "z5 z6 z6 z7"
-        "z8 z8 z8 z8";
+        "z1 z1 z1"
+        "z3 z2 z4"
+        "z5 z2 z4"
+        "z5 z6 z7"
+        "z8 z8 z8";
 }
 
 
