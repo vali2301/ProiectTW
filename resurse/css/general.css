@@ -1,9 +1,14 @@
 /* restaurare stiluri de baza(dupa reset) */
-h1, h2, h3, b, strong {
+h1,
+h2,
+h3,
+b,
+strong {
     font-weight: bold;
 }
 
-i, em {
+i,
+em {
     font-style: italic;
 }
 
@@ -164,7 +169,7 @@ footer,
     /*d*/
     background-color: #1a1a24;
     border: 1px solid var(--culoare-contur);
-    box-shadow:0 0.3125rem 0.9375rem #000000;
+    box-shadow: 0 0.3125rem 0.9375rem #000000;
     border-radius: 0.625rem;
 }
 
@@ -412,7 +417,7 @@ td {
 
 /* bonus pt mathml */
 #math-bonus {
-    font-size: 1.3rem; 
+    font-size: 1.3rem;
     margin: 1.25rem 0;
 }
 
@@ -422,10 +427,134 @@ td {
 }
 
 .math-highlight {
-    color: #0782ab; 
+    color: #0782ab;
     font-style: italic;
-    font-size: 1.5em; 
+    font-size: 1.5em;
 }
 
 
 
+/*printare*/
+
+@media print {
+
+    @page :left {
+        margin: 1cm 1cm 1cm 2cm;
+    }
+
+    @page :right {
+        margin: 1cm 2cm 1cm 1cm;
+    }
+
+
+    * {
+        background: transparent !important;
+        background-color: white !important;
+        color: black !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a {
+        text-decoration: none !important;
+    }
+
+
+    #grid-pagina,
+    section,
+    article,
+    main,
+    header,
+    footer {
+        display: block !important;
+        width: 100% !important;
+        margin: 0;
+        padding: 10px 0;
+    }
+
+
+    img,
+    video,
+    iframe,
+    figure,
+    figcaption,
+    .map-container,
+    #link-top,
+    #hamburger,
+    #btn-menu,
+    #zona-video,
+    .tooltip-text {
+        display: none !important;
+    }
+
+
+    h1 {
+        text-align: center;
+        margin-top: 50px;
+    }
+
+
+    nav {
+        display: block !important;
+        page-break-after: always;
+    }
+
+    nav ul {
+        display: block !important;
+        list-style-type: disc !important;
+        padding-left: 40px;
+    }
+
+    nav ul li {
+        display: list-item !important;
+        margin-bottom: 5px;
+    }
+
+    nav ul li .submeniu {
+        display: block !important;
+        position: static !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        list-style-type: circle !important;
+        padding-left: 20px;
+    }
+
+
+    footer {
+        page-break-before: always;
+    }
+
+
+    footer p#banner-proiect {
+        display: block !important;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 50%;
+        border: 4px double black !important;
+        padding: 10px;
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+    /* 6 */
+    body::after {
+        content: "CIRSTEA \A CONSTANTIN-VALENTIN";
+        white-space: pre;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 60%;
+        height: 10%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        font-weight: bold;
+        text-align: center;
+        color: rgba(0, 0, 0, 0.3) !important;
+        z-index: -1000;
+        pointer-events: none;
+    }
+}

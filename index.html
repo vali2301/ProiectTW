@@ -27,17 +27,39 @@
 <body>
     <header>
         <h1>F1 Apex Gear</h1>
-        <nav> <!--nav task 8-->
+        <nav> <input type="checkbox" id="btn-menu">
+            <label for="btn-menu" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </label>
+
             <ul>
-                <li><a href="index.html">Acasă</a>
-                    <ul>
+                <li>
+                    <a href="index.html">
+                        <i class="fas fa-home"></i> <span>Acasă</span>
+                    </a>
+                    <ul class="submeniu">
                         <li><a href="#welcome">Despre noi</a></li>
                         <li><a href="#promotii">Oferte</a></li>
                         <li><a href="#anunturi">Evenimente</a></li>
+                        <li><a href="#faq-echipamente">Întrebări Frecvente</a></li>
+                        <li><a href="#program-echipa">Program Magazin</a></li>
                     </ul>
                 </li>
-                <li><a href="#faq-echipamente">Echipamente</a></li>
-                <li><a href="#program-echipa">Program Magazin</a></li>
+                <li>
+                    <a href="echipamente.html">
+                        <i class="fas fa-helmet-safety"></i> <span>Echipamente</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="inregistrare.html">
+                        <i class="fas fa-user-plus"></i> <span>Înregistrare</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#contact">
+                        <i class="fas fa-envelope"></i> <span>Contact</span>
+                    </a>
+                </li>
             </ul>
         </nav>
     </header>
@@ -310,7 +332,7 @@
     </main>
 
     <!--task 18 si 19-->
-    <footer>
+    <footer id="contact">
         <address>
             <strong>F1 Apex Gear HQ</strong><br>
 
@@ -326,7 +348,7 @@
 
             Contact Rapid: <a href="https://wa.me/40722000000">Chat pe WhatsApp</a>
         </address>
-<!--task bonus cu iframe harta-->
+        <!--task bonus cu iframe harta-->
         <div class="map-container" style="margin-top: 1.25rem;">
             <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5697.69392853581!2d26.0357828942383!3d44.43630131535379!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b201f609995a6f%3A0x8a7b024778b7d337!2sPolitehnica%20Business%20Tower!5e0!3m2!1sro!2sro!4v1773833425261!5m2!1sro!2sro"
@@ -347,6 +369,7 @@
             </div>
             <span class="tooltip-text">Mergi sus</span>
         </a>
+        <p id="banner-proiect">Acesta este un proiect școlar!</p>
 
     </footer>
 

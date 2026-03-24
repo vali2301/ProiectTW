@@ -1,0 +1,183 @@
+nav ul li .submeniu, nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+nav {
+  background-color: var(--culoare-fundal);
+  position: relative;
+  z-index: 1000;
+  width: 100%;
+}
+nav #hamburger {
+  display: none;
+  cursor: pointer;
+  padding: 1rem;
+  color: var(--culoare-text);
+  font-size: 2rem;
+}
+nav #btn-menu {
+  display: none;
+}
+nav ul li {
+  position: relative;
+}
+nav ul li a {
+  display: block;
+  padding: 1rem 1.5rem;
+  color: var(--culoare-text);
+  text-decoration: none;
+  position: relative;
+  z-index: 1;
+  transition: color 0.4s ease-in-out;
+}
+nav ul li a::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  background-color: #0872ab;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.4s ease-in-out;
+  z-index: -1;
+}
+nav ul li a:hover::before {
+  transform: translate(-50%, -50%) scale(1);
+}
+nav ul li .submeniu {
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #000000;
+  min-width: 12rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0);
+  transform-origin: 0 0;
+  transition: all 0.4s ease-in-out;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+nav ul li .submeniu li {
+  width: 100%;
+}
+nav ul li .submeniu li a {
+  padding: 0.8rem 1rem;
+  position: relative;
+  z-index: 1;
+}
+nav ul li .submeniu li a::before {
+  background-color: var(--culoare-accent);
+}
+nav ul li .submeniu li a:hover {
+  background-color: var(--culoare-accent);
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+nav ul li:hover > .submeniu {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+
+@media screen and (max-width: 1000px) and (min-width: 701px) {
+  nav ul li a span {
+    display: none;
+  }
+}
+@media screen and (max-width: 700px) {
+  nav {
+    position: relative;
+  }
+  nav #hamburger {
+    display: block !important;
+    background-color: black;
+    color: #fff;
+    padding: 1rem;
+    cursor: pointer;
+    font-size: 1.5rem;
+    z-index: 1001;
+    position: relative;
+  }
+  nav #btn-menu {
+    display: none;
+  }
+  nav ul {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease;
+    background-color: transparent;
+  }
+  nav ul::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    z-index: -1;
+    clip-path: polygon(0% 0%, 0% 0%, 0% 50%, 0% 100%, 0% 100%);
+    transition: clip-path 0.8s ease-in-out;
+  }
+  nav ul li {
+    width: 100%;
+  }
+  nav ul li:first-child a i {
+    display: inline-block !important;
+    font-size: 1.8rem;
+  }
+  nav ul li:first-child a span {
+    display: none;
+  }
+  nav ul li:not(:first-child) a i {
+    display: none !important;
+  }
+  nav ul li a {
+    display: block;
+    padding: 1.2rem;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.4s ease-in-out;
+  }
+  nav ul li a:hover {
+    background-color: var(--culoare-accent);
+    text-shadow: 2px 2px 4px rgba(13, 0, 97, 0.8);
+  }
+  nav ul li a::before {
+    display: none !important;
+  }
+  nav ul li .submeniu {
+    position: static;
+    display: none;
+    background-color: rgb(0, 0, 0);
+  }
+  nav ul li .submeniu li a {
+    padding: 0.8rem;
+    background-color: transparent;
+    border-bottom: 1px dashed #000000;
+  }
+  nav ul li:hover > .submeniu {
+    display: block;
+  }
+  nav #btn-menu:checked ~ ul {
+    opacity: 1;
+    visibility: visible;
+  }
+  nav #btn-menu:checked ~ ul::before {
+    clip-path: polygon(0% 0%, 85% 0%, 100% 50%, 85% 100%, 0% 100%);
+    transition: clip-path 1s cubic-bezier(0.5, 0, 0.5, 1);
+  }
+}/*# sourceMappingURL=nav.css.map */
