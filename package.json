@@ -1,0 +1,35 @@
+{
+  "name": "f1-apex-gear",
+  "version": "1.0.0",
+  "description": "Echipamente F1 originale pentru fanii adevărați. Trăiește adrenalina circuitului cu produsele echipelor tale favorite.",
+  "keywords": [
+    "F1",
+    "motorsport",
+    "echipamente",
+    "masini",
+    "curse",
+    "viteza",
+    "echipe",
+    "tricou",
+    "casca"
+  ],
+  "homepage": "https://github.com/vali2301/ProiectTW#readme",
+  "bugs": {
+    "url": "https://github.com/vali2301/ProiectTW/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vali2301/ProiectTW.git"
+  },
+  "license": "ISC",
+  "author": "Cirstea Constantin-Valentin",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "ejs": "^5.0.2",
+    "express": "^5.2.1"
+  }
+}

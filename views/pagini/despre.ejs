@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <%- include("../fragmente/head.ejs") %>
+    <title><%= locals.titlu %> - Despre Noi</title>
+</head>
+<body>
+    <%- include("../fragmente/header.ejs") %>
+
+    <main>
+        <section>
+            <h2>Istoricul F1 Apex Gear</h2>
+            <p>F1 Apex Gear a luat naștere din pasiunea pură pentru motorsport. Suntem o firmă virtuală dedicată fanilor care vor să simtă adrenalina circuitului prin echipamente de cea mai înaltă calitate.</p>
+            
+            <figure>
+                <img src="/imagini/istoric.jpg" alt="Echipa noastră pe circuit" style="width: 50%; height: auto; display: block; margin: 0 auto;">
+                <figcaption>Echipa noastră la testele oficiale din 2024.</figcaption>
+            </figure>
+
+            <p>Misiunea noastră este să aducem fanii mai aproape de piloții lor favoriți, oferind produse autentice și o experiență de neuitat.</p>
+        </section>
+        <section id="prezentare-video">
+    <h2>Video Prezentare</h2>
+    
+    <video controls preload="auto" poster="/video/poster.jpg" class="video-prezentare">
+        <source src="/video/prezentare.mp4" type="video/mp4">
+        <source src="/video/prezentare.webm" type="video/webm">
+
+        <track src="/vtt/subtitrare_ro.vtt" kind="subtitles" srclang="ro" label="Română" default>
+        <track src="/vtt/subtitrare_en.vtt" kind="subtitles" srclang="en" label="English">
+
+        Browserul tau nu suportă tag-ul video.
+    </video>
+</section>
+    </main>
+
+    <%- include("../fragmente/footer.ejs") %>
+</body>
+</html>

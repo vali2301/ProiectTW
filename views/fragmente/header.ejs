@@ -1,0 +1,33 @@
+<header>
+    <h1>F1 Apex Gear</h1>
+    <nav> 
+        <input type="checkbox" id="btn-menu">
+        <label for="btn-menu" id="hamburger">
+            <i class="fas fa-bars"></i>
+        </label>
+
+        <ul>
+            <% for (let p of paginiMeniu) { %>
+                <li>
+                    <a href="<%= p.link %>">
+                        <i class="<%= p.icon %>"></i> <span><%= p.text %></span>
+                    </a>
+                    <% if (p.text === "Acasă") { %>
+                        <ul class="submeniu">
+                            <li><a href="/despre">Despre noi</a></li> 
+                            
+                            <li><a href="/index#promotii">Oferte</a></li>
+                            <li><a href="/index#anunturi">Evenimente</a></li>
+                            <li><a href="/index#faq-echipamente">Întrebări Frecvente</a></li>
+                            <li><a href="/index#program-echipa">Program Magazin</a></li>
+                        </ul>
+                    <% } %>
+                </li>
+            <% } %>
+        </ul>
+    </nav>
+   
+    <div id="date-utilizator">
+        <p>Utilizator IP: <strong><%= locals.ip %></strong></p>
+    </div>
+</header>

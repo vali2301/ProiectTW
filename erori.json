@@ -1,0 +1,38 @@
+{
+    "cale_baza": "imagini/erori",
+    "eroare_default": {
+        "titlu": "Eroare Necunoscută",
+        "text": "A apărut o problemă neprevăzută.",
+        "imagine": "default.png"
+    },
+    "info_erori": [
+        {
+            "identificator": 403,
+            "status": true,
+            "titlu": "Acces Interzis",
+            "text": "Nu ai permisiunea de a accesa această pagină.",
+            "imagine": "403.png"
+        },
+        {
+            "identificator": 404,
+            "status": true,
+            "titlu": "Pagina nu a fost găsită",
+            "text": "Din păcate, pagina căutată nu există sau a fost mutată.",
+            "imagine": "404.png"
+        },
+        {
+            "identificator": 500,
+            "status": true,
+            "titlu": "Eroare Server",
+            "text": "Serverul a întâmpinat o problemă tehnică.",
+            "imagine": "500.png"
+        },
+        {
+            "identificator": 400,
+            "status": true,
+            "titlu": "Cerere Incorectă",
+            "text": "Nu puteți accesa direct fișierele de tip template (EJS).",
+            "imagine": "400.png"
+        }
+    ]
+}

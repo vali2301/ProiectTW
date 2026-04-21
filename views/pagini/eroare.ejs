@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <%- include("../fragmente/head.ejs") %>
+    <title><%= locals.titlu %></title>
+</head>
+<body>
+    <%- include("../fragmente/header.ejs") %>
+
+    <main>
+        <section>
+            <h2><%= locals.infoEroare.titlu %></h2>
+            <p><%= locals.infoEroare.text %></p>
+            
+            <% if (locals.infoEroare.imagine) { %>
+                <img src="<%= locals.infoEroare.imagine %>" alt="Imagine Eroare" style="max-width: 400px;">
+            <% } %>
+            
+            <p><a href="/index">Înapoi la pagina principală</a></p>
+        </section>
+    </main>
+
+    <%- include("../fragmente/footer.ejs") %>
+</body>
+</html>
