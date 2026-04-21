@@ -1,5 +1,5 @@
 {
-    "cale_baza": "imagini/erori",
+    "cale_baza": "/imagini/erori",
     "eroare_default": {
         "titlu": "Eroare Necunoscută",
         "text": "A apărut o problemă neprevăzută.",

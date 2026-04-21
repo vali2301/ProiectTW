@@ -124,3 +124,78 @@ app.get(/^\/(.*)/, function(req, res) {
 app.listen(port, () => {
     console.log(`Serverul rulează la: http://localhost:${port}`);
 });
+
+
+
+
+function valideazaErori() {
+    const caleJson = path.join(__dirname, "erori.json");
+
+    // A
+    if (!fs.existsSync(caleJson)) {
+        console.error("Eroare: Fisierul 'erori.json' nu a fost gasit la calea: " + caleJson);
+        process.exit(1);
+    }
+
+    const continutString = fs.readFileSync(caleJson, "utf8");
+    
+    // F
+    const regexDuplicate = /"(\w+)":\s*[^,}]*,\s*.*"\1":/g;
+    if (regexDuplicate.test(continutString)) {
+        console.error("Eroare (Punct F): In fisierul JSON exista proprietati duplicate.");
+    }
+
+    let obErori;
+    try {
+        obErori = JSON.parse(continutString);
+    } catch (e) {
+        console.error("Eroare: Sintaxa JSON invalida.");
+        process.exit(1);
+    }
+
+    // B
+    const campuriRadacina = ["info_erori", "cale_baza", "eroare_default"];
+    campuriRadacina.forEach(camp => {
+        if (!obErori.hasOwnProperty(camp)) {
+            console.error(`Eroare (Punct B): Lipseste proprietatea obligatorie "${camp}" din radacina JSON-ului.`);
+        }
+    });
+
+    // C
+    const ed = obErori.eroare_default;
+    if (ed && (!ed.titlu || !ed.text || !ed.imagine)) {
+        console.error("Eroare (Punct C): Obiectul 'eroare_default' trebuie sa contina 'titlu', 'text' si 'imagine'.");
+    }
+
+    // D
+   
+    let directorErori = obErori.cale_baza || "";
+    if (!directorErori.startsWith("resurse") && directorErori !== "") {
+        directorErori = path.join("resurse", directorErori);
+    }
+    const caleBazaAbs = path.join(__dirname, directorErori);
+
+    if (!fs.existsSync(caleBazaAbs)) {
+        console.error(`Eroare (Punct D): Directorul configurat nu exista pe disc: ${caleBazaAbs}`);
+    }
+
+    // E G 
+    
+    const idsVerificate = [];
+    if (Array.isArray(obErori.info_erori)) {
+        obErori.info_erori.forEach((eroare) => {
+            const caleImg = path.join(caleBazaAbs, eroare.imagine || "");
+            if (!fs.existsSync(caleImg)) {
+                console.error(`Eroare (Punct E): Imaginea "${eroare.imagine}" pentru ID ${eroare.identificator} nu a fost gasita la ${caleImg}.`);
+            }
+
+            if (idsVerificate.includes(eroare.identificator)) {
+                console.error(`Eroare (Punct G): Identificatorul "${eroare.identificator}" este duplicat. Proprietati: Titlu: ${eroare.titlu}, Text: ${eroare.text}, Imagine: ${eroare.imagine}`);
+            }
+            idsVerificate.push(eroare.identificator);
+        });
+    }
+}
+
+
+valideazaErori();
