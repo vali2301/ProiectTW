@@ -1,0 +1,89 @@
+{
+  "cale_galerie": "/imagini",
+  "imagini": [
+    {
+      "cale_fisier": "monaco_view.jpg",
+      "titlu": "Circuitul Monaco",
+      "alt": "Vedere panoramică Monaco Grand Prix",
+      "text_descriere": "Vedere spectaculoasă asupra portului și a celebrului circuit stradal.",
+      "luni": ["aprilie", "mai", "iunie"]
+    },
+    {
+      "cale_fisier": "pitstop_redbull.jpg",
+      "titlu": "Pit Stop Rapid",
+      "alt": "Echipă mecanică efectuând un schimb de pneuri",
+      "text_descriere": "Precizie și viteză incredibilă sub presiunea secundelor.",
+      "luni": ["martie", "aprilie", "mai"]
+    },
+    {
+      "cale_fisier": "ferrari_cockpit.jpg",
+      "titlu": "Cockpit Ferrari",
+      "alt": "Interior volan masină Ferrari F1",
+      "text_descriere": "Panoul complex de control și butoanele de configurare a monopostului.",
+      "luni": ["aprilie", "iulie", "august"]
+    },
+    {
+      "cale_fisier": "start_lights.jpg",
+      "titlu": "Momentul Startului",
+      "alt": "Semafoarele de start pe grila de plecare",
+      "text_descriere": "Adrenalina maximă în secundele dinaintea stingerii luminilor roșii.",
+      "luni": ["martie", "aprilie", "noiembrie"]
+    },
+    {
+      "cale_fisier": "spa_rain.jpg",
+      "titlu": "Ploaie la Spa",
+      "alt": "Mașină de curse pe circuit umed cu spray de apă",
+      "text_descriere": "Provocările pilotajului în condiții meteorologice extreme la Spa-Francorchamps.",
+      "luni": ["aprilie", "august", "septembrie"]
+    },
+    {
+      "cale_fisier": "helmet_detail.jpg",
+      "titlu": "Casca Pilotului",
+      "alt": "Detaliu design cască protecție pilot",
+      "text_descriere": "Element crucial de siguranță și simbol al identității pilotului.",
+      "luni": ["ianuarie", "aprilie", "decembrie"]
+    },
+    {
+      "cale_fisier": "night_race_singapore.jpg",
+      "titlu": "Cursă Nocturnă",
+      "alt": "Monopost F1 sub luminile reflectoarelor din Singapore",
+      "text_descriere": "Atmosfera unică a curselor desfășurate sub lumina artificială.",
+      "luni": ["aprilie", "septembrie", "octombrie"]
+    },
+    {
+      "cale_fisier": "mercedes_front_wing.jpg",
+      "titlu": "Aerodinamică",
+      "alt": "Detaliu eleron față Mercedes F1",
+      "text_descriere": "Inginerie de top pentru maximizarea forței de apăsare la sol.",
+      "luni": ["februarie", "aprilie", "iunie"]
+    },
+    {
+      "cale_fisier": "podium_celebration.jpg",
+      "titlu": "Celebrare pe Podium",
+      "alt": "Piloți sărbătorind cu șampanie pe podium",
+      "text_descriere": "Bucuria victoriei și recompensarea efortului întregii echipe.",
+      "luni": ["martie", "aprilie", "iunie"]
+    },
+    {
+      "cale_fisier": "tyre_marbles.jpg",
+      "titlu": "Pneuri Uzate",
+      "alt": "Detaliu textură pneu Pirelli după cursă",
+      "text_descriere": "Uzura cauciucului după zeci de tururi la intensitate maximă.",
+      "luni": ["aprilie", "iulie", "septembrie"]
+    },
+    {
+      "cale_fisier": "v10_engine.jpg",
+      "titlu": "Motorul V10",
+      "alt": "Unitate motor de Formula 1 expusă",
+      "text_descriere": "Inima tehnologică ce produce sute de cai putere.",
+      "luni": ["aprilie", "mai", "decembrie"]
+    },
+    {
+      "cale_fisier": "fans_grandstand.jpg",
+      "titlu": "Tribuna Fanilor",
+      "alt": "Suporteri cu steaguri în tribune la Monza",
+      "text_descriere": "Pasiunea fanilor 'Tifosi' care transformă cursa într-un spectacol.",
+      "luni": ["martie", "aprilie", "septembrie"]
+    }
+  ]
+}

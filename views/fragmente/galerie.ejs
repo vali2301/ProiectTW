@@ -1,0 +1,10 @@
+<div class="grid-galerie">
+    <% if (typeof galerie !== 'undefined' && galerie.imagini) { %>
+        <% for (let img of galerie.imagini) { %>
+            <figure>
+                <img src="<%= galerie.cale_galerie %>/<%= img.cale_fisier %>" alt="<%= img.alt %>">
+                <figcaption><%= img.titlu %></figcaption>
+            </figure>
+        <% } %>
+    <% } %>
+</div>

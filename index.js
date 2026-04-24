@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const sass = require('sass');
 const fs = require('fs');
 const app = express();
 const port = 8080;
@@ -97,32 +98,39 @@ app.get('/favicon.ico', function(req, res) {
     res.sendFile(path.join(__dirname, 'resurse', 'ico', 'favicon', 'favicon.ico'), function(err) {
         if (err) {
             console.log("Eroare la trimiterea faviconului:", err);
-            res.status(404).end(); // Dacă nu găsește fișierul, măcar să nu crape serverul
+            res.status(404).end(); 
         }
     });
 });
 
 app.get(/^\/(.*)/, function(req, res) {
     let numePagina = req.params[0]; 
-    if (!numePagina) numePagina = "index";
-    let ipUtilizator = req.ip;
+    if (!numePagina || numePagina === "index") numePagina = "index";
+    
+    if (numePagina.includes('.')) {
+        return afisareEroare(res, 404);
+    }
 
-    res.render("pagini/" + numePagina, datePagina, function(eroare, rezultatRandare) {
+    // Păstrăm datele tale vechi
+    let dateRandare = { ...datePagina };
+
+    // ADAUGĂM doar asta pentru galerie:
+    if (numePagina === "despre") {
+        dateRandare.galerie = citesteGalerie();
+    }
+
+    res.render("pagini/" + numePagina, dateRandare, function(eroare, rezultatRandare) {
         if (eroare) {
             if (eroare.message.startsWith("Failed to lookup view")) {
                 afisareEroare(res, 404);
             } else {
+                console.error("Eroare Randare:", eroare);
                 afisareEroare(res, 500);
             }
         } else {
             res.send(rezultatRandare);
         }
     });
-});
-
-
-app.listen(port, () => {
-    console.log(`Serverul rulează la: http://localhost:${port}`);
 });
 
 
@@ -199,3 +207,101 @@ function valideazaErori() {
 
 
 valideazaErori();
+
+
+//etapa 5 task cu compilare automata
+obGlobal.folderScss = path.join(__dirname, "resurse/scss");
+obGlobal.folderCss = path.join(__dirname, "resurse/css");
+
+function compileazaScss(caleScss, caleCss) {
+    let caleAbsScss = path.isAbsolute(caleScss) ? caleScss : path.join(obGlobal.folderScss, caleScss);
+    
+    let caleAbsCss;
+    if (!caleCss) {
+        let numeFisier = path.basename(caleAbsScss, '.scss');
+        caleAbsCss = path.join(obGlobal.folderCss, numeFisier + '.css');
+    } else {
+        caleAbsCss = path.isAbsolute(caleCss) ? caleCss : path.join(obGlobal.folderCss, caleCss);
+    }
+
+    if (!fs.existsSync(caleAbsScss)) {
+        return;
+    }
+
+    if (fs.existsSync(caleAbsCss)) {
+        let folderBackup = path.join(__dirname, "backup/resurse/css");
+        if (!fs.existsSync(folderBackup)) {
+            fs.mkdirSync(folderBackup, { recursive: true });
+        }
+
+        let numeFisierCss = path.basename(caleAbsCss);
+        let timp = new Date().getTime();
+        let caleBackup = path.join(folderBackup, `${timp}_${numeFisierCss}`); 
+        
+        try {
+            fs.copyFileSync(caleAbsCss, caleBackup);
+        } catch (err) {
+            console.error("Eroare la crearea backup-ului pentru", numeFisierCss, err);
+        }
+    }
+
+    try {
+        
+        let rezultat = sass.compile(caleAbsScss, {
+            logger: sass.Logger.silent
+        });
+        fs.writeFileSync(caleAbsCss, rezultat.css);
+        console.log(`[SCSS] Compilat cu succes: ${path.basename(caleAbsScss)}`);
+    } catch (err) {
+        console.error(`[SCSS Eroare] ${err.message}`);
+    }
+}
+
+if (fs.existsSync(obGlobal.folderScss)) {
+    let fisiere = fs.readdirSync(obGlobal.folderScss);
+    fisiere.forEach(fisier => {
+        if (fisier.endsWith(".scss")) {
+            compileazaScss(fisier);
+        }
+    });
+}
+
+if (fs.existsSync(obGlobal.folderScss)) {
+    fs.watch(obGlobal.folderScss, (event, filename) => {
+        if (filename && filename.endsWith(".scss")) {
+            compileazaScss(filename);
+        }
+    });
+}
+
+
+
+function citesteGalerie() {
+    try {
+        const caleJson = path.join(__dirname, 'galerie.json');
+        if (!fs.existsSync(caleJson)) return { imagini: [] }; // Dacă nu e fișierul, trimitem gol
+
+        const date = JSON.parse(fs.readFileSync(caleJson, 'utf8'));
+        const luniRo = ["ianuarie", "februarie", "martie", "aprilie", "mai", "iunie", 
+                        "iulie", "august", "septembrie", "octombrie", "noiembrie", "decembrie"];
+        const lunaCurenta = luniRo[new Date().getMonth()];
+
+        let imaginiFiltrate = date.imagini.filter(img => img.luni.includes(lunaCurenta));
+        date.imagini = imaginiFiltrate.slice(0, 12);
+        
+        return date;
+    } catch (e) {
+        console.error("Eroare la citirea galeriei:", e);
+        return { imagini: [] };
+    }
+}
+
+
+
+
+
+
+
+app.listen(port, () => {
+    console.log(`Serverul rulează la: http://localhost:${port}`);
+});
