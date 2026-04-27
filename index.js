@@ -111,10 +111,10 @@ app.get(/^\/(.*)/, function(req, res) {
         return afisareEroare(res, 404);
     }
 
-    // Păstrăm datele tale vechi
+    
     let dateRandare = { ...datePagina };
 
-    // ADAUGĂM doar asta pentru galerie:
+  
     if (numePagina === "despre") {
         dateRandare.galerie = citesteGalerie();
     }
@@ -279,7 +279,7 @@ if (fs.existsSync(obGlobal.folderScss)) {
 function citesteGalerie() {
     try {
         const caleJson = path.join(__dirname, 'galerie.json');
-        if (!fs.existsSync(caleJson)) return { imagini: [] }; // Dacă nu e fișierul, trimitem gol
+        if (!fs.existsSync(caleJson)) return { imagini: [] }; 
 
         const date = JSON.parse(fs.readFileSync(caleJson, 'utf8'));
         const luniRo = ["ianuarie", "februarie", "martie", "aprilie", "mai", "iunie", 

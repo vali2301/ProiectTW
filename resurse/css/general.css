@@ -738,20 +738,18 @@ main a:active {
     margin: 0;
 }
 
-/* --- LOGICA PENTRU 12 POZE (CICLU DE 6) --- */
 
-/* Randul 1: Pozitia 1 (Col 1), Pozitia 2 (Col 3) */
 .grid-galerie figure:nth-of-type(6n-5) { grid-column: 1; }
 .grid-galerie figure:nth-of-type(6n-4) { grid-column: 3; } /* Aceasta e poza 2 (si 8) */
 
-/* Randul 2: Pozitia 3 (Col 2) */
+
 .grid-galerie figure:nth-of-type(6n-3) { grid-column: 2; }
 
-/* Randul 3: Pozitia 4 (Col 1), Pozitia 5 (Col 3) */
+
 .grid-galerie figure:nth-of-type(6n-2) { grid-column: 1; }
 .grid-galerie figure:nth-of-type(6n-1) { grid-column: 3; }
 
-/* Randul 4: Pozitia 6 (Col 2) */
+
 .grid-galerie figure:nth-of-type(6n)   { grid-column: 2; }
 
 
