@@ -6,6 +6,7 @@ const app = express();
 const port = 8080;
 
 
+
 const vect_foldere = ["temp", "logs", "backup", "fisiere_uploadate"];
 
 vect_foldere.forEach((numeFolder) => {
