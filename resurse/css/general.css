@@ -785,3 +785,107 @@ main a:active {
 @media screen and (max-width: 700px) {
     .grid-galerie { grid-template-columns: 1fr; }
 }
+
+
+
+/*task text plimbaret*/
+.container-plimbaret {
+    width: 100%;
+    overflow: hidden; 
+    background-color: 15151e;
+    color: white;
+    padding: 10px 0;
+    box-sizing: border-box;
+}
+
+.text-plimbaret {
+    display: inline-block;
+    white-space: nowrap; 
+    font-weight: bold;
+    animation: plimba-text 15s linear infinite;
+}
+
+@keyframes plimba-text {
+    0% { transform: translateX(100vw); }
+    100% { transform: translateX(-100%); }
+}
+
+
+/*task pentru stilizare hr*/
+.separator-f1 {
+
+    box-sizing: content-box; 
+    
+    border: none; 
+    width: 80%; 
+    margin: 50px auto; 
+    
+   
+    height: 4px; 
+    background-color: var(--culoare-accent); 
+    
+
+    border-style: solid;
+    border-color: transparent; 
+    border-left-color: var(--culoare-accent); 
+    border-right-color: var(--culoare-accent); 
+    
+
+    border-width: 15px 25px; 
+    
+
+    background-clip: padding-box; 
+}
+
+
+
+/*task pentru tabel resposive */
+
+
+.wrapper-tabel-responsive {
+    border: 2px solid #222; 
+    margin: 30px 0;
+    width: 100%;
+    overflow-x: auto;
+    box-sizing: border-box;
+    background-color: var(--culoare-fundal); 
+    color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+}
+
+.tabel-f1 {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px; 
+    font-family: Arial, sans-serif;
+}
+
+.tabel-f1 th,
+.tabel-f1 td {
+    border: 1px solid #444; 
+    padding: 12px 15px;
+    text-align: center;
+}
+
+
+.tabel-f1 th {
+    background-color: var(--culoare-accent) ;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+
+.tabel-f1 tbody tr:hover {
+    background-color: #000000;
+}
+
+
+.footer-tabel-f1 {
+    border-top: none; 
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: bold;
+    background-color: var(--culoare-fundal);
+}
