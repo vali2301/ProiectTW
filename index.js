@@ -5,6 +5,21 @@ const fs = require('fs');
 const app = express();
 const port = 8080;
 
+const { Client } = require('pg');
+const Produs = require('./module_proprii/produs.js');
+
+const client = new Client({
+    user: 'admin_f1',
+    host: 'localhost',
+    database: 'f1_apex_gear', 
+    password: 'admin', 
+    port: 5432,
+});
+
+client.connect()
+    .then(() => console.log('Conectat cu succes la baza de date f1_apex_gear!'))
+    .catch(err => console.error('Eroare la conectare:', err.stack));
+
 
 
 const vect_foldere = ["temp", "logs", "backup", "fisiere_uploadate"];
@@ -87,6 +102,50 @@ app.get(['/', '/index', '/home'], (req, res) => {
 });
 
 
+app.get('/echipamente', async (req, res) => {
+    try {
+        const rezultat = await client.query('SELECT * FROM echipamente');
+        let vectorProduse = rezultat.rows.map(rand => new Produs(rand));
+        
+        console.log(vectorProduse);
+        
+        res.render('pagini/produse', Object.assign({}, datePagina, { 
+            produse: vectorProduse,
+            titlu: "Echipamente - " + datePagina.titlu 
+        }));
+
+    } catch (err) {
+        console.error('Eroare la interogare:', err);
+        res.status(500).send('Eroare interna a serverului.');
+    }
+});
+
+
+app.get('/echipament/:id', async (req, res) => {
+    try {
+        const idProdus = req.params.id; 
+        const rezultat = await client.query('SELECT * FROM echipamente WHERE id = $1', [idProdus]);
+
+        if (rezultat.rows.length === 0) {
+            return res.status(404).render('pagini/404', { mesaj: "Produsul nu a fost găsit." });
+        }
+
+        const dateProdus = new Produs(rezultat.rows[0]);
+
+        res.render('pagini/produs_unic', Object.assign({}, datePagina, { 
+            produs: dateProdus,
+            titlu: dateProdus.nume 
+        }));
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Eroare la încărcarea produsului.");
+    }
+});
+
+
+
+
+
 app.get(/^\/resurse\/.*\/$/, function(req, res) {
     afisareEroare(res, 403);
 });
@@ -133,7 +192,6 @@ app.get(/^\/(.*)/, function(req, res) {
         }
     });
 });
-
 
 
 

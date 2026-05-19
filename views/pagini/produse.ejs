@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <%- include('../fragmente/head') %>
+    <title><%= titlu %></title>
+    <script src="/js/produse.js"></script> 
+</head>
+<body>
+    <%- include('../fragmente/header') %>
+
+    <main>
+        <h1>Produse F1 - Apex Gear</h1>
+
+        <section id="filtrare-produse">
+            <input type="text" id="inp-nume" placeholder="Cauta dupa nume...">
+            
+            <label>Categorie:</label>
+            <select id="inp-categorie">
+                <option value="toate">Toate</option>
+                <option value="Tricouri">Tricouri</option>
+                <option value="Pantaloni">Pantaloni</option>
+                <option value="Sepci">Sepci</option>
+                <option value="Jackete">Jackete</option>
+            </select>
+
+            <button id="filtrare" class="btn btn-primary">Filtrează</button>
+            <button id="resetare" class="btn btn-secondary">Resetează</button>
+        </section>
+
+        <hr>
+
+        <div class="grid-produse" style="display: flex; flex-wrap: wrap; gap: 20px;">
+            <% for(let prod of produse) { %>
+                <article class="produs" style="border: 1px solid #ccc; padding: 10px; width: 250px;">
+                    <h3 class="val-nume"><a href="/echipament/<%= prod.id %>"><%= prod.nume %></a></h3>
+                    <img src="/imagini/produse/<%= prod.imagine %>" alt="<%= prod.nume %>" style="width: 100%;">
+                    
+                    <p><strong>Descriere:</strong> <%= prod.descriere %></p>
+                    <p><strong>Echipa:</strong> <%= prod.echipa %></p>
+                    <p><strong>Categorie:</strong> <span class="val-categorie"><%= prod.categorie %></span></p>
+                    <p><strong>Preț:</strong> <span class="val-pret"><%= prod.pret %></span> RON</p>
+                    <p><strong>Greutate:</strong> <%= prod.greutate_g %> g</p>
+                    
+                    <% if(prod.este_nou) { %>
+                        <span style="color: green; font-weight: bold;">[NOU!]</span>
+                    <% } %>
+                </article>
+            <% } %>
+        </div>
+    </main>
+
+    <%- include('../fragmente/footer') %>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <%- include('../fragmente/head') %>
+</head>
+<body>
+    <%- include('../fragmente/header') %>
+
+    <main class="container-produs-unic">
+        <section style="display: flex; gap: 50px; padding: 20px;">
+            <div class="coloana-foto" style="flex: 1;">
+                <img src="/imagini/produse/<%= produs.imagine %>" alt="<%= produs.nume %>" style="width: 100%;">
+            </div>
+
+            <div class="coloana-info" style="flex: 1;">
+                <h1><%= produs.nume %></h1>
+                <p class="pret-mare">Preț: <strong><%= produs.pret %> RON</strong></p>
+                <hr>
+                <p><strong>Descriere completă:</strong> <%= produs.descriere %></p>
+                <ul>
+                    <li><strong>Categorie:</strong> <%= produs.categorie %></li>
+                    <li><strong>Echipă F1:</strong> <%= produs.echipa %></li>
+                    <li><strong>Greutate:</strong> <%= produs.greutate_g %> g</li>
+                    <li><strong>Data adăugării:</strong> <%= produs.data_adaugare.toLocaleDateString('ro-RO') %></li>
+                    <li><strong>Culori disponibile:</strong> <%= produs.culori %></li>
+                    <li><strong>Nou în stoc:</strong> <%= produs.este_nou ? "Da" : "Nu" %></li>
+                </ul>
+                <button class="btn-cumparare">Adaugă în coș</button>
+            </div>
+        </section>
+        <a href="/echipamente" style="display: inline-block; margin-top: 20px;">← Înapoi la toate echipamentele</a>
+    </main>
+
+    <%- include('../fragmente/footer') %>
+</body>
+</html>
