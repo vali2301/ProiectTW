@@ -1,7 +1,7 @@
 <header>
     <div class="container-reflexie">
-    <h1 class="text-reflexie" data-text="F1 Apex Gear">F1 Apex Gear</h1>
-</div>
+        <h1 class="text-reflexie" data-text="F1 Apex Gear">F1 Apex Gear</h1>
+    </div>
     <nav> 
         <input type="checkbox" id="btn-menu">
         <label for="btn-menu" id="hamburger">
@@ -17,17 +17,33 @@
                     <% if (p.text === "Acasă") { %>
                         <ul class="submeniu">
                             <li><a href="/despre">Despre noi</a></li> 
-                            
                             <li><a href="/index#promotii">Oferte</a></li>
                             <li><a href="/index#anunturi">Evenimente</a></li>
                             <li><a href="/index#faq-echipamente">Întrebări Frecvente</a></li>
                             <li><a href="/index#program-echipa">Program Magazin</a></li>
                         </ul>
                     <% } %>
+                    <% if (p.text === "Echipamente") { %>
+                        <ul class="submeniu">
+                            <li><a href="/echipamente?categorie=toate">Toate</a></li>
+                            <% if (locals.categoriiBaza) { %>
+                                <% for (let cat of categoriiBaza) { %>
+                                    <li><a href="/echipamente?categorie=<%= cat %>"><%= cat %></a></li>
+                                <% } %>
+                            <% } %>
+                        </ul>
+                    <% } %>
                 </li>
-            <% } %>
-        </ul>
-    </nav>
+            <% } %> <li class="d-flex align-items-center justify-content-center" style="padding: 10px 20px;">
+                <div class="form-check form-switch d-flex align-items-center m-0 p-0">
+                    <i class="fas fa-sun text-warning me-2 fs-5"></i>
+                    
+                    <input class="form-check-input fs-5 mt-0" type="checkbox" role="switch" id="btn-tema" style="cursor: pointer; margin-left: 0;">
+                    
+                    <i class="fas fa-moon text-info ms-2 fs-5"></i>
+                </div>
+            </li>
+            </ul> </nav>
    
     <div id="date-utilizator">
         <p>Utilizator IP: <strong><%= locals.ip %></strong></p>

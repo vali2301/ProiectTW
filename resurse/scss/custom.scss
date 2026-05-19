@@ -1,22 +1,17 @@
 
 $font-family-base: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
-
 $h1-font-size: 2.8rem;
 $h2-font-size: 2.2rem;
-
 
 $border-radius: 12px;
 $border-radius-lg: 16px;
 
-
 $primary: #0782ab;  
-$secondary: #181887; 
-
+$secondary: #082f40; 
 
 $body-color: #222222; 
 $link-color: #0782ab; 
-
 
 $grid-breakpoints: (
   xs: 0,
@@ -27,7 +22,40 @@ $grid-breakpoints: (
   xxl: 1400px
 );
 
-
 $enable-shadows: true;
 
+
+$btn-border-width: 2px; 
+
+
+$form-range-thumb-width: 1.5rem; 
+$form-range-thumb-height: 1.5rem; 
+$form-range-thumb-bg: #0782ab; 
+$form-range-track-bg: #444444; 
+$input-bg: #2a2a35;             
+$input-color: #ffffff;          
+$input-border-color: #444444;   
+$input-focus-bg: #32323f;       
+$input-focus-color: #ffffff;    
+$input-placeholder-color: #aaaaaa; 
+
+
+$form-select-bg: #2a2a35;
+$form-select-color: #ffffff;
+
+:root {
+    --bg-body-f1: #f4f4f9;      
+    --culoare-text-f1: #222222; 
+}
+
+body.dark-theme {
+    --bg-body-f1: #12121a !important;      
+    --culoare-text-f1: #ffffff !important; 
+}
+
+body {
+    background-color: var(--bg-body-f1) !important;
+    color: var(--culoare-text-f1) !important;
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
 @import "../../node_modules/bootstrap/scss/bootstrap";

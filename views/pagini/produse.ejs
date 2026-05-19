@@ -1,54 +1,214 @@
 <!DOCTYPE html>
 <html lang="ro">
+
 <head>
     <%- include('../fragmente/head') %>
-    <title><%= titlu %></title>
-    <script src="/js/produse.js"></script> 
+        <title>
+            <%= titlu %>
+        </title>
+        <link rel="stylesheet" href="/css/produse.css" type="text/css">
+        <script src="/js/produse.js"></script>
 </head>
+
 <body>
     <%- include('../fragmente/header') %>
 
-    <main>
-        <h1>Produse F1 - Apex Gear</h1>
+        <main>
+            <h1>Produse F1 - Apex Gear</h1>
 
-        <section id="filtrare-produse">
-            <input type="text" id="inp-nume" placeholder="Cauta dupa nume...">
-            
-            <label>Categorie:</label>
-            <select id="inp-categorie">
-                <option value="toate">Toate</option>
-                <option value="Tricouri">Tricouri</option>
-                <option value="Pantaloni">Pantaloni</option>
-                <option value="Sepci">Sepci</option>
-                <option value="Jackete">Jackete</option>
-            </select>
+            <section id="filtrare-produse" class="container p-4 mb-4 rounded border shadow">
+                <h3 class="mb-4 text-info">Filtrează Echipamentele F1</h3>
 
-            <button id="filtrare" class="btn btn-primary">Filtrează</button>
-            <button id="resetare" class="btn btn-secondary">Resetează</button>
-        </section>
+                <div class="row g-3 text-start">
 
-        <hr>
+                    <div class="col-md-6 col-lg-4">
+                        <label for="inp-nume" class="form-label">Nume produs:</label>
+                        <input type="text" id="inp-nume" class="form-control" placeholder="Ex: Jachetă Mercedes">
+                    </div>
 
-        <div class="grid-produse" style="display: flex; flex-wrap: wrap; gap: 20px;">
-            <% for(let prod of produse) { %>
-                <article class="produs" style="border: 1px solid #ccc; padding: 10px; width: 250px;">
-                    <h3 class="val-nume"><a href="/echipament/<%= prod.id %>"><%= prod.nume %></a></h3>
-                    <img src="/imagini/produse/<%= prod.imagine %>" alt="<%= prod.nume %>" style="width: 100%;">
-                    
-                    <p><strong>Descriere:</strong> <%= prod.descriere %></p>
-                    <p><strong>Echipa:</strong> <%= prod.echipa %></p>
-                    <p><strong>Categorie:</strong> <span class="val-categorie"><%= prod.categorie %></span></p>
-                    <p><strong>Preț:</strong> <span class="val-pret"><%= prod.pret %></span> RON</p>
-                    <p><strong>Greutate:</strong> <%= prod.greutate_g %> g</p>
-                    
-                    <% if(prod.este_nou) { %>
-                        <span style="color: green; font-weight: bold;">[NOU!]</span>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="form-floating h-100">
+                            <textarea class="form-control h-100" id="inp-descriere" placeholder="Caută"
+                                style="background-color: #2a2a35; color: white;"></textarea>
+                            <label for="inp-descriere" style="color: #888;">Căutare în descriere</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4">
+                        <label for="inp-categorie" class="form-label">Categorie:</label>
+                        <select id="inp-categorie" class="form-select">
+                            <option value="toate" selected>Oricare (Toate categoriile)</option>
+                            <option value="Jackete">Jackete</option>
+                            <option value="Tricouri">Tricouri</option>
+                            <option value="Pantaloni">Pantaloni</option>
+                            <option value="Sepci">Sepci</option>
+                            <option value="Accesorii">Accesorii</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4">
+                        <label for="inp-echipa" class="form-label">Echipa F1:</label>
+                        <input list="lista-echipe" id="inp-echipa" class="form-control"
+                            placeholder="Scrie sau alege...">
+                        <datalist id="lista-echipe">
+                            <option value="Ferrari">
+                            <option value="Mercedes">
+                            <option value="Red Bull Racing">
+                            <option value="McLaren">
+                            <option value="Aston Martin">
+                        </datalist>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4">
+                        <label for="inp-culori" class="form-label">Culori:</label>
+                        <select id="inp-culori" class="form-select" multiple size="3">
+                            <option value="negru">Negru</option>
+                            <option value="rosu">Roșu</option>
+                            <option value="alb">Alb</option>
+                            <option value="albastru">Albastru</option>
+                            <option value="portocaliu">Portocaliu</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-12 col-lg-4">
+                        <label class="form-label mb-0">Interval Preț (RON):</label>
+                        <div class="mt-2">
+                            <label class="form-label small">Min: <span id="infoRangeMin">0</span></label>
+                            <input type="range" id="inp-pret-min" class="form-range" min="0" max="2000" step="10"
+                                value="0">
+                        </div>
+                        <div class="mt-2">
+                            <label class="form-label small">Max: <span id="infoRangeMax">2000</span></label>
+                            <input type="range" id="inp-pret-max" class="form-range" min="0" max="2000" step="10"
+                                value="2000">
+                        </div>
+                    </div>
+
+                    <div class="col-12 mt-4">
+                        <label class="form-label d-block">Greutate estimată:</label>
+                        <input type="radio" class="btn-check" name="gr-greutate" id="greutate-toate" autocomplete="off"
+                            value="toate" checked>
+                        <label class="btn btn-outline-info mb-2" for="greutate-toate">Oricare</label>
+
+                        <input type="radio" class="btn-check" name="gr-greutate" id="greutate-usor" autocomplete="off"
+                            value="usor">
+                        <label class="btn btn-outline-info mb-2" for="greutate-usor">Ușor</label>
+
+                        <input type="radio" class="btn-check" name="gr-greutate" id="greutate-mediu" autocomplete="off"
+                            value="mediu">
+                        <label class="btn btn-outline-info mb-2" for="greutate-mediu">Mediu</label>
+
+                        <input type="radio" class="btn-check" name="gr-greutate" id="greutate-greu" autocomplete="off"
+                            value="greu">
+                        <label class="btn btn-outline-info mb-2" for="greutate-greu">Greu</label>
+                    </div>
+
+                    <div class="col-12 mt-2">
+                        <input type="checkbox" class="btn-check" id="inp-nou" autocomplete="off" value="da">
+                        <label class="btn btn-outline-warning" for="inp-nou">Afișează doar produsele NOU apărute în
+                            stoc</label>
+                    </div>
+                </div>
+
+                <hr class="border-secondary my-4">
+
+                <div class="d-flex flex-wrap gap-2">
+                    <button id="filtrare" class="btn btn-primary">
+                        <i class="bi bi-funnel-fill"></i> <span class="d-none d-sm-inline">Filtrează</span>
+                    </button>
+                    <button id="resetare" class="btn btn-secondary">
+                        <i class="bi bi-arrow-counterclockwise"></i> <span class="d-none d-sm-inline">Resetează</span>
+                    </button>
+                    <button id="sortCresc" class="btn btn-outline-light">
+                        <i class="bi bi-sort-alpha-down"></i> <span class="d-none d-sm-inline">Ascendent</span>
+                    </button>
+                    <button id="sortDescresc" class="btn btn-outline-light">
+                        <i class="bi bi-sort-alpha-down-alt"></i> <span class="d-none d-sm-inline">Descendent</span>
+                    </button>
+                    <button id="calculeaza" class="btn btn-warning text-dark font-weight-bold">
+                        <i class="bi bi-calculator"></i> <span class="d-none d-sm-inline">Calculează Suma</span>
+                    </button>
+                </div>
+            </section>
+
+            <script>
+                document.getElementById('inp-pret-min').oninput = function () { document.getElementById('infoRangeMin').innerHTML = this.value; }
+                document.getElementById('inp-pret-max').oninput = function () { document.getElementById('infoRangeMax').innerHTML = this.value; }
+            </script>
+
+            <hr>
+
+            <div class="grid-produse">
+                <% for(let prod of produse) { %>
+                    <article id="art<%= prod.id %>" class="produs articol-produs <%= prod.categorie %>">
+
+                        <div class="coloana-stanga">
+                            <img src="/imagini/produse/<%= prod.imagine %>" alt="<%= prod.nume %>"
+                                class="imagine-produs">
+                        </div>
+
+                        <div class="coloana-dreapta">
+                            <h3>
+                                <%= prod.nume %>
+                            </h3>
+                            <p><strong>Categorie:</strong> <span class="val-categorie">
+                                    <%= prod.categorie %>
+                                </span></p>
+                            <p class="descriere-produs">
+                                <%= prod.descriere %>
+                            </p>
+
+                            <table border="1" class="tabel-detalii">
+                                <tr class="rand-intunecat">
+                                    <td class="celula-nume"><strong>Preț</strong></td>
+                                    <td><span class="val-pret">
+                                            <%= prod.pret %>
+                                        </span> RON</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Echipă F1</strong></td>
+                                    <td class="val-echipa">
+                                        <%= prod.echipa %>
+                                    </td>
+                                </tr>
+                                <tr class="rand-intunecat">
+                                    <td><strong>Culori disponibile</strong></td>
+                                    <td class="val-culori">
+                                        <%= prod.culori %>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Data adăugării</strong></td>
+                                    <td>
+                                        <time datetime="<%= prod.data_adaugare %>">
+                                            <%= prod.dataFormata %>
+                                        </time>
+                                    </td>
+                                </tr>
+                                <tr class="rand-intunecat">
+                                    <td><strong>Nou în stoc</strong></td>
+                                    <td class="val-nou">
+                                        <%= prod.este_nou ? 'Da' : 'Nu' %>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Greutate</strong></td>
+                                    <td class="val-greutate">
+                                        <%= prod.greutate_g %>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <p style="margin-top: 15px;"><a href="/echipament/<%= prod.id %>" class="link-detalii">Vezi
+                                    pagina produsului ➡️</a></p>
+                        </div>
+
+                    </article>
                     <% } %>
-                </article>
-            <% } %>
-        </div>
-    </main>
+            </div>
+        </main>
 
-    <%- include('../fragmente/footer') %>
+        <%- include('../fragmente/footer') %>
 </body>
+
 </html>

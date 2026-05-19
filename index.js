@@ -49,6 +49,21 @@ let obGlobal = {
     obErori: null
 };
 
+
+//etapa 6 middleware pt submeniu de la echipamente
+app.use(async (req, res, next) => {
+    try {
+        const rezultat = await client.query('SELECT DISTINCT categorie FROM echipamente');
+        app.locals.categoriiBaza = rezultat.rows.map(rand => rand.categorie);
+    } catch (err) {
+        console.error("Eroare la preluarea categoriilor în middleware:", err);
+        app.locals.categoriiBaza = [];
+    }
+    next();
+});
+
+
+
 function initErori() {
     let continut = fs.readFileSync(path.join(__dirname, 'erori.json'), 'utf8');
     let obiectErori = JSON.parse(continut);
@@ -101,26 +116,33 @@ app.get(['/', '/index', '/home'], (req, res) => {
     res.render('pagini/index', datePagina);
 });
 
-
+//etapa 6 toate echipamentele si filtrare dupa categorie
 app.get('/echipamente', async (req, res) => {
     try {
-        const rezultat = await client.query('SELECT * FROM echipamente');
+        let categorieAleasa = req.query.categorie;
+        let querySQL = 'SELECT * FROM echipamente';
+        let parametri = [];
+
+        if (categorieAleasa && categorieAleasa !== 'toate') {
+            querySQL += ' WHERE categorie = $1';
+            parametri.push(categorieAleasa);
+        }
+
+        const rezultat = await client.query(querySQL, parametri);
         let vectorProduse = rezultat.rows.map(rand => new Produs(rand));
-        
-        console.log(vectorProduse);
-        
+
         res.render('pagini/produse', Object.assign({}, datePagina, { 
-            produse: vectorProduse,
-            titlu: "Echipamente - " + datePagina.titlu 
+            produse: vectorProduse, 
+            titlu: "Echipamente F1 - Apex Gear"
         }));
 
     } catch (err) {
-        console.error('Eroare la interogare:', err);
-        res.status(500).send('Eroare interna a serverului.');
+        console.error(err);
+        res.status(500).send('Eroare la filtrarea produselor.');
     }
 });
 
-
+//etapa 6 pentru fiecare produs in parte
 app.get('/echipament/:id', async (req, res) => {
     try {
         const idProdus = req.params.id; 
