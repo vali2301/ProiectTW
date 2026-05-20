@@ -1,7 +1,6 @@
 window.onload = function () {
-    // 8.1 bultonul de filtrare
-    document.getElementById("filtrare").onclick = function () {
-
+    //am pus logica de filtrare intr o fct sa o pot refolosi
+    function aplicaFiltre() {
         let valNume = document.getElementById("inp-nume").value.trim().toLowerCase();
         let valDescriere = document.getElementById("inp-descriere").value.trim().toLowerCase();
         let valCategorie = document.getElementById("inp-categorie").value;
@@ -84,6 +83,24 @@ window.onload = function () {
                 art.style.display = "flex";
             }
         }
+    }
+
+    // 8.1 bultonul de filtrare (doar apeleaza functia)
+    document.getElementById("filtrare").onclick = aplicaFiltre;
+
+
+    document.getElementById("inp-nume").onchange = aplicaFiltre;
+    document.getElementById("inp-descriere").onchange = aplicaFiltre;
+    document.getElementById("inp-categorie").onchange = aplicaFiltre;
+    document.getElementById("inp-pret-min").onchange = aplicaFiltre;
+    document.getElementById("inp-pret-max").onchange = aplicaFiltre;
+    document.getElementById("inp-nou").onchange = aplicaFiltre;
+    document.getElementById("inp-echipa").onchange = aplicaFiltre;
+    document.getElementById("inp-culori").onchange = aplicaFiltre;
+
+    let radioGreutati = document.getElementsByName("gr-greutate");
+    for (let radio of radioGreutati) {
+        radio.onchange = aplicaFiltre;
     }
 
     // punct 9 resetare
