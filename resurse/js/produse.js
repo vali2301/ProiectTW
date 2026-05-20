@@ -9,7 +9,7 @@ window.onload = function () {
         let valPretMax = parseInt(document.getElementById("inp-pret-max").value);
         let bifatNou = document.getElementById("inp-nou").checked;
         let valGreutate = document.querySelector('input[name="gr-greutate"]:checked').value;
-        
+
         //echipa si culori
         let valEchipa = document.getElementById("inp-echipa").value.trim().toLowerCase();
         let optiuniCulori = document.getElementById("inp-culori").selectedOptions;
@@ -30,10 +30,10 @@ window.onload = function () {
         let txtDescriere = document.getElementById("inp-descriere");
         if (valDescriere.length > 0 && valDescriere.length < 3) {
             alert("Dacă folosești căutarea în descriere, scrie măcar 3 litere!");
-            txtDescriere.classList.add("is-invalid"); 
+            txtDescriere.classList.add("is-invalid");
             return;
         } else {
-            txtDescriere.classList.remove("is-invalid"); 
+            txtDescriere.classList.remove("is-invalid");
         }
 
         if (valPretMin > valPretMax) {
@@ -51,10 +51,10 @@ window.onload = function () {
             let categorie = art.querySelector(".val-categorie").textContent.trim();
             let pret = parseFloat(art.querySelector(".val-pret").textContent);
             let esteNou = art.querySelector(".val-nou").textContent.trim();
-            
+
             let echipa = art.querySelector(".val-echipa").textContent.trim().toLowerCase();
             let culoriProdus = art.querySelector(".val-culori").textContent.trim().toLowerCase();
-            
+
             let elemGreutate = art.querySelector(".val-greutate");
             let grame = elemGreutate ? parseFloat(elemGreutate.textContent.trim()) : 0;
             let catGreutate = (grame < 400) ? "usor" : (grame <= 1000 ? "mediu" : "greu");
@@ -76,7 +76,7 @@ window.onload = function () {
             let condPret = (pret >= valPretMin && pret <= valPretMax);
             let condDescriere = (valDescriere === "" || descriere.includes(valDescriere));
             let condNou = bifatNou ? (esteNou === "Da") : true;
-            
+
             let condEchipa = (valEchipa === "" || echipa.includes(valEchipa));
             let condCulori = (valCulori.length === 0 || valCulori.some(culoare => culoriProdus.includes(culoare)));
 
@@ -92,18 +92,22 @@ window.onload = function () {
         if (raspuns) {
             document.getElementById("inp-nume").value = "";
             document.getElementById("inp-nume").classList.remove("is-invalid"); // Curăță starea de eroare
-            
+
             document.getElementById("inp-descriere").value = "";
             document.getElementById("inp-descriere").classList.remove("is-invalid"); // Curăță starea de eroare
-            
+
             document.getElementById("inp-categorie").value = "toate";
             document.getElementById("inp-echipa").value = "";
 
-            document.getElementById("inp-pret-min").value = 0;
-            document.getElementById("infoRangeMin").innerHTML = "0";
+            
+            let pretMinDOM = document.getElementById("inp-pret-min");
+            pretMinDOM.value = pretMinDOM.min;
+            document.getElementById("infoRangeMin").innerHTML = pretMinDOM.min;
 
-            document.getElementById("inp-pret-max").value = 2000;
-            document.getElementById("infoRangeMax").innerHTML = "2000";
+            
+            let pretMaxDOM = document.getElementById("inp-pret-max");
+            pretMaxDOM.value = pretMaxDOM.max;
+            document.getElementById("infoRangeMax").innerHTML = pretMaxDOM.max;
 
             document.getElementById("inp-nume").style.border = "";
             document.getElementById("inp-nou").checked = false;
