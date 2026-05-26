@@ -20,11 +20,11 @@ em {
 
 /*task schema-cromatica*/
 body {
-    --culoare-fundal: #15151e;
-    --culoare-text: #f3f3f3;
+    --culoare-fundal: #ffffff;
+    --culoare-text: #222222;
     --culoare-accent: #0782ab;
-    --culoare-contur: #38383f;
-    --culoare-highlight: #ffffff;
+    --culoare-contur: #dee2e6;
+    --culoare-highlight: #0782ab;
 
     /*a*/
     --spatiere-pagina: 6.25rem;
@@ -38,6 +38,14 @@ body {
 
     font-family: 'Exo 2', sans-serif;
     /*pentru icon*/
+}
+
+body.dark-theme {
+    --culoare-fundal: #15151e;
+    --culoare-text: #f3f3f3;
+    --culoare-accent: #0782ab;
+    --culoare-contur: #38383f;
+    --culoare-highlight: #ffffff;
 }
 
 
@@ -172,10 +180,17 @@ footer,
 #grid-pagina>section {
     padding: 1.25rem;
     /*d*/
-    background-color: #1a1a24;
+    background-color: #f5f5f5;
     border: 1px solid var(--culoare-contur);
-    box-shadow: 0 0.3125rem 0.9375rem #000000;
+    box-shadow: 0 0.3125rem 0.9375rem rgba(0,0,0,0.1);
     border-radius: 0.625rem;
+}
+
+body.dark-theme header,
+body.dark-theme footer,
+body.dark-theme #grid-pagina>section {
+    background-color: #1a1a24;
+    box-shadow: 0 0.3125rem 0.9375rem #000000;
 }
 
 /*e*/
@@ -567,13 +582,18 @@ td {
 #date-utilizator {
     text-align: right;
     padding: 5px 20px;
-    background-color: rgba(0,0,0,0.2); 
+    background-color: rgba(255,255,255,0.8);
     font-size: 0.8rem;
-    color: white;
+    color: #222222;
 }
 
 #date-utilizator strong {
-    color: #0782ab; 
+    color: #0782ab;
+}
+
+body.dark-theme #date-utilizator {
+    background-color: rgba(0,0,0,0.2);
+    color: white;
 }
 
 
@@ -583,6 +603,11 @@ td {
 #prezentare-video {
     text-align: center;
     padding: 20px;
+    background-color: #f5f5f5;
+    color: #222222;
+}
+
+body.dark-theme #prezentare-video {
     background-color: #15151e;
     color: white;
 }
@@ -796,11 +821,16 @@ main a:active {
 /*task text plimbaret*/
 .container-plimbaret {
     width: 100%;
-    overflow: hidden; 
-    background-color: 15151e;
-    color: white;
+    overflow: hidden;
+    background-color: #f5f5f5;
+    color: #222222;
     padding: 10px 0;
     box-sizing: border-box;
+}
+
+body.dark-theme .container-plimbaret {
+    background-color: #15151e;
+    color: white;
 }
 
 .text-plimbaret {
@@ -848,14 +878,20 @@ main a:active {
 
 
 .wrapper-tabel-responsive {
-    border: 2px solid #222; 
+    border: 2px solid #dee2e6;
     margin: 30px 0;
     width: 100%;
     overflow-x: auto;
     box-sizing: border-box;
-    background-color: var(--culoare-fundal); 
+    background-color: var(--culoare-fundal);
+    color: #222222;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+body.dark-theme .wrapper-tabel-responsive {
+    border: 2px solid #222;
     color: #ffffff;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
 
 .tabel-f1 {

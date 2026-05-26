@@ -85,7 +85,7 @@ window.onload = function () {
         }
     }
 
-    // 8.1 bultonul de filtrare (doar apeleaza functia)
+    // 8.1 bultonul de filtrare 
     document.getElementById("filtrare").onclick = aplicaFiltre;
 
 
