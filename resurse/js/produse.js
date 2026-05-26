@@ -1,5 +1,53 @@
 window.onload = function () {
-    //am pus logica de filtrare intr o fct sa o pot refolosi
+    const K = 4; 
+    let produseFiltrate = Array.from(document.getElementsByClassName("produs"));
+
+    function afiseazaPagina(P) {
+        let articole = document.getElementsByClassName("produs");
+        for (let art of articole) {
+            art.style.display = "none";
+        }
+        
+        let start = (P - 1) * K;
+        let end = P * K - 1;
+        
+        for (let i = 0; i < produseFiltrate.length; i++) {
+            if (i >= start && i <= end) {
+                produseFiltrate[i].style.display = "flex";
+            }
+        }
+        
+        let butoane = document.querySelectorAll("#container-paginare .btn-pagina");
+        butoane.forEach(btn => {
+            btn.classList.remove("active");
+            if(parseInt(btn.textContent) === P) {
+                btn.classList.add("active");
+            }
+        });
+    }
+
+    function renderPagination() {
+        let container = document.getElementById("container-paginare");
+        if (!container) return;
+        container.innerHTML = "";
+        
+        let N = produseFiltrate.length;
+        if (N > K) {
+            let NRL = Math.ceil(N / K);
+            for(let i = 1; i <= NRL; i++) {
+                let btn = document.createElement("button");
+                btn.className = "btn btn-outline-primary btn-pagina";
+                btn.textContent = i;
+                btn.onclick = function() {
+                    afiseazaPagina(i);
+                };
+                container.appendChild(btn);
+            }
+        }
+        afiseazaPagina(1);
+    }
+
+    //logica de filtrare intr o fct sa o pot refolosi
     function aplicaFiltre() {
         let valNume = document.getElementById("inp-nume").value.trim().toLowerCase();
         let valDescriere = document.getElementById("inp-descriere").value.trim().toLowerCase();
@@ -41,6 +89,7 @@ window.onload = function () {
         }
 
         let articole = document.getElementsByClassName("produs");
+        produseFiltrate = [];
 
         for (let art of articole) {
             art.style.display = "none";
@@ -80,9 +129,11 @@ window.onload = function () {
             let condCulori = (valCulori.length === 0 || valCulori.some(culoare => culoriProdus.includes(culoare)));
 
             if (condNume && condCategorie && condPret && condDescriere && condNou && condEchipa && condCulori && condGreutate) {
-                art.style.display = "flex";
+                produseFiltrate.push(art);
             }
         }
+        
+        renderPagination();
     }
 
     // 8.1 bultonul de filtrare 
@@ -137,10 +188,7 @@ window.onload = function () {
                 opt.selected = false;
             }
 
-            let articole = document.getElementsByClassName("produs");
-            for (let art of articole) {
-                art.style.display = "flex";
-            }
+            aplicaFiltre();
         }
     }
 
@@ -166,6 +214,8 @@ window.onload = function () {
         for (let art of articole) {
             grid.appendChild(art);
         }
+        
+        aplicaFiltre();
     }
 
     let btnSortCresc = document.getElementById("sortCresc");
@@ -212,4 +262,6 @@ window.onload = function () {
             }, 2000);
         }
     }
+    
+    renderPagination();
 }
