@@ -28,6 +28,29 @@
                 <button class="btn-cumparare">Adaugă în coș</button>
             </div>
         </section>
+
+        <% if (locals.produseSimilare && produseSimilare.length > 0) { %>
+            <section class="produse-similare mt-5">
+                <h3 class="mb-4 text-center">Produse Similare</h3>
+                <div class="row text-center justify-content-center">
+                    <% for(let sim of produseSimilare) { %>
+                        <div class="col-md-3">
+                            <a href="/echipament/<%= sim.id %>" class="text-decoration-none text-dark">
+                                <div class="card h-100 shadow-sm">
+                                    <img src="/imagini/produse/<%= sim.imagine %>" class="card-img-top p-2" alt="<%= sim.nume %>" style="height: 150px; object-fit: contain;">
+                                    <div class="card-body">
+                                        <h5 class="card-title fs-6"><%= sim.nume %></h5>
+                                        <p class="card-text text-danger fw-bold"><%= sim.pret %> RON</p>
+                                        <p class="card-text small text-muted"><%= sim.echipa %></p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    <% } %>
+                </div>
+            </section>
+        <% } %>
+
         <a href="/echipamente" style="display: inline-block; margin-top: 20px;">← Înapoi la toate echipamentele</a>
     </main>
 
