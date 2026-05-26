@@ -47,10 +47,14 @@ window.onload = function () {
         afiseazaPagina(1);
     }
 
-    //logica de filtrare intr o fct sa o pot refolosi
+    function removeDiacritics(str) {
+        return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    }
+
+    //am pus logica de filtrare intr o fct sa o pot refolosi
     function aplicaFiltre() {
-        let valNume = document.getElementById("inp-nume").value.trim().toLowerCase();
-        let valDescriere = document.getElementById("inp-descriere").value.trim().toLowerCase();
+        let valNume = removeDiacritics(document.getElementById("inp-nume").value.trim().toLowerCase());
+        let valDescriere = removeDiacritics(document.getElementById("inp-descriere").value.trim().toLowerCase());
         let valCategorie = document.getElementById("inp-categorie").value;
         let valPretMin = parseInt(document.getElementById("inp-pret-min").value);
         let valPretMax = parseInt(document.getElementById("inp-pret-max").value);
@@ -94,8 +98,8 @@ window.onload = function () {
         for (let art of articole) {
             art.style.display = "none";
 
-            let nume = art.querySelector("h3").textContent.trim().toLowerCase();
-            let descriere = art.querySelector(".descriere-produs").textContent.trim().toLowerCase();
+            let nume = removeDiacritics(art.querySelector("h3").textContent.trim().toLowerCase());
+            let descriere = removeDiacritics(art.querySelector(".descriere-produs").textContent.trim().toLowerCase());
             let categorie = art.querySelector(".val-categorie").textContent.trim();
             let pret = parseFloat(art.querySelector(".val-pret").textContent);
             let esteNou = art.querySelector(".val-nou").textContent.trim();
