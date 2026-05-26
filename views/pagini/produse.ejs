@@ -21,10 +21,16 @@
                 "Produs F1";
                 let descriereExemplu = produse.length > 0 ? produse[0].categorie : "echipament";
                 let greutatiValabile = new Set(["toate"]);
+                let pretMinimCategorii = {};
 
                 for (let p of produse) {
                 let pretCurent = parseFloat(p.pret);
                 if (pretCurent < minPret) minPret=pretCurent; if (pretCurent> maxPret) maxPret = pretCurent;
+
+                    let cat = p.categorie;
+                    if (!pretMinimCategorii[cat] || pretCurent < pretMinimCategorii[cat]) {
+                        pretMinimCategorii[cat] = pretCurent;
+                    }
 
                     categoriiUnice.add(p.categorie);
                     echipeUnice.add(p.echipa);
@@ -215,6 +221,11 @@
                                             <h3>
                                                 <%= prod.nume %>
                                             </h3>
+                                            <% if (parseFloat(prod.pret) === pretMinimCategorii[prod.categorie]) { %>
+                                                <div class="badge bg-success text-white mb-2 d-inline-block px-2 py-1 rounded">
+                                                    <i class="bi bi-tag-fill"></i> Cel mai ieftin din categoria sa!
+                                                </div>
+                                            <% } %>
                                             <p><strong>Categorie:</strong> <span class="val-categorie">
                                                     <%= prod.categorie %>
                                                 </span></p>

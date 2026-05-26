@@ -36,6 +36,41 @@ vect_foldere.forEach((numeFolder) => {
     } 
 });
 
+// Bonus 13
+const T_MINUTES = 60; 
+setInterval(() => {
+    const caleBackup = path.join(__dirname, 'backup');
+    if (fs.existsSync(caleBackup)) {
+        fs.readdir(caleBackup, (err, fisiere) => {
+            if (err) {
+                console.error("Eroare la citirea folderului backup:", err);
+                return;
+            }
+            let acum = Date.now();
+            let timpExpirare = T_MINUTES * 60 * 1000;
+
+            fisiere.forEach(fisier => {
+                let caleFisier = path.join(caleBackup, fisier);
+                fs.stat(caleFisier, (err, stats) => {
+                    if (err) {
+                        console.error(`Eroare la obținerea informațiilor pentru ${fisier}:`, err);
+                        return;
+                    }
+                    if (stats.isFile() && (acum - stats.mtimeMs > timpExpirare)) {
+                        fs.unlink(caleFisier, err => {
+                            if (err) {
+                                console.error(`Eroare la ștergerea fișierului vechi ${fisier}:`, err);
+                            } else {
+                                console.log(`Fișierul de backup prea vechi "${fisier}" a fost șters.`);
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    }
+}, 15 * 60 * 1000); 
+
 app.set('trust proxy', true);
 
 app.set('view engine', 'ejs');

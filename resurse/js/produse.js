@@ -1,7 +1,7 @@
 window.onload = function () {
     const K = 4; 
     let produseFiltrate = Array.from(document.getElementsByClassName("produs"));
-
+   //bonus 5 
     function afiseazaPagina(P) {
         let articole = document.getElementsByClassName("produs");
         for (let art of articole) {
@@ -47,6 +47,7 @@ window.onload = function () {
         afiseazaPagina(1);
     }
 
+    //bonus 7
     function removeDiacritics(str) {
         return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
     }
