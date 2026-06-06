@@ -25,7 +25,6 @@ window.onload = function () {
             }
         });
     }
-
     function renderPagination() {
         let container = document.getElementById("container-paginare");
         if (!container) return;
@@ -49,7 +48,7 @@ window.onload = function () {
 
     //bonus 7
     function removeDiacritics(str) {
-        return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");//adrese unicode
     }
 
     //am pus logica de filtrare intr o fct sa o pot refolosi
@@ -142,7 +141,7 @@ window.onload = function () {
     }
 
     // 8.1 bultonul de filtrare 
-    document.getElementById("filtrare").onclick = aplicaFiltre;
+    document.getElementById("filtrare").onclick = aplicaFiltre; //bonus4
 
 
     document.getElementById("inp-nume").onchange = aplicaFiltre;
@@ -164,10 +163,10 @@ window.onload = function () {
         let raspuns = confirm("Ești sigur că vrei să resetezi toate filtrele?");
         if (raspuns) {
             document.getElementById("inp-nume").value = "";
-            document.getElementById("inp-nume").classList.remove("is-invalid"); // Curăță starea de eroare
+            document.getElementById("inp-nume").classList.remove("is-invalid"); 
 
             document.getElementById("inp-descriere").value = "";
-            document.getElementById("inp-descriere").classList.remove("is-invalid"); // Curăță starea de eroare
+            document.getElementById("inp-descriere").classList.remove("is-invalid"); 
 
             document.getElementById("inp-categorie").value = "toate";
             document.getElementById("inp-echipa").value = "";
@@ -233,7 +232,7 @@ window.onload = function () {
         btnSortDescresc.onclick = function () { sorteazaProduse(-1); }
     }
 
-    // 8.3 butonul de calcul
+    // 8.3 butonul de calcul //permite sa aflu stilurile finale
     let btnCalculeaza = document.getElementById("calculeaza");
     if (btnCalculeaza) {
         btnCalculeaza.onclick = function () {

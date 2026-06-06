@@ -21,13 +21,13 @@
                 "Produs F1";
                 let descriereExemplu = produse.length > 0 ? produse[0].categorie : "echipament";
                 let greutatiValabile = new Set(["toate"]);
-                let pretMinimCategorii = {};
+                let pretMinimCategorii = {}; //bonus14
 
                 for (let p of produse) {
                 let pretCurent = parseFloat(p.pret);
                 if (pretCurent < minPret) minPret=pretCurent; if (pretCurent> maxPret) maxPret = pretCurent;
 
-                    let cat = p.categorie;
+                    let cat = p.categorie; //bonus14
                     if (!pretMinimCategorii[cat] || pretCurent < pretMinimCategorii[cat]) {
                         pretMinimCategorii[cat] = pretCurent;
                     }
@@ -61,13 +61,13 @@
 
                                     <div class="col-md-6 col-lg-4">
                                         <label for="inp-nume" class="form-label">Nume produs:</label>
-                                        <input type="text" id="inp-nume" class="form-control"
+                                        <input type="text" id="inp-nume" class="form-control" <%# bonus1 %>
                                             placeholder="Ex: <%= numeExemplu %>">
                                     </div>
 
                                     <div class="col-md-6 col-lg-4">
                                         <div class="form-floating h-100">
-                                            <textarea class="form-control h-100" id="inp-descriere" placeholder="Caută"
+                                            <textarea class="form-control h-100" id="inp-descriere" placeholder="Caută" <%# bonus2 %>
                                                 style="background-color: #2a2a35; color: white;"></textarea>
                                             <label for="inp-descriere" style="color: #888;">Căutare (ex: <%=
                                                     descriereExemplu %>)</label>
@@ -76,7 +76,7 @@
 
                                     <div class="col-md-6 col-lg-4">
                                         <label for="inp-categorie" class="form-label">Categorie:</label>
-                                        <select id="inp-categorie" class="form-select">
+                                        <select id="inp-categorie" class="form-select"><%# bonus1 %>
                                             <option value="toate" selected>Oricare (Toate categoriile)</option>
                                             <% for (let cat of categoriiUnice) { %>
                                                 <option value="<%= cat %>">
@@ -88,7 +88,7 @@
 
                                     <div class="col-md-6 col-lg-4">
                                         <label for="inp-echipa" class="form-label">Echipa F1:</label>
-                                        <input list="lista-echipe" id="inp-echipa" class="form-control"
+                                        <input list="lista-echipe" id="inp-echipa" class="form-control"<%# bonus1 %>
                                             placeholder="Scrie sau alege...">
                                         <datalist id="lista-echipe">
                                             <% for (let echipa of echipeUnice) { %>
@@ -99,7 +99,7 @@
 
                                     <div class="col-md-6 col-lg-4">
                                         <label for="inp-culori" class="form-label">Culori:</label>
-                                        <select id="inp-culori" class="form-select" multiple size="3">
+                                        <select id="inp-culori" class="form-select" multiple size="3"><%# bonus1 %>
                                             <% for (let culoare of culoriUnice) { %>
                                                 <option value="<%= culoare %>">
                                                     <%= culoare.charAt(0).toUpperCase() + culoare.slice(1) %>
@@ -114,7 +114,7 @@
                                             <label class="form-label small">Min: <span id="infoRangeMin">
                                                     <%= minPret %>
                                                 </span></label>
-                                            <input type="range" id="inp-pret-min" class="form-range"
+                                            <input type="range" id="inp-pret-min" class="form-range"<%# bonus1 %>
                                                 min="<%= minPret %>" max="<%= maxPret %>" step="1"
                                                 value="<%= minPret %>">
                                         </div>
@@ -122,7 +122,7 @@
                                             <label class="form-label small">Max: <span id="infoRangeMax">
                                                     <%= maxPret %>
                                                 </span></label>
-                                            <input type="range" id="inp-pret-max" class="form-range"
+                                            <input type="range" id="inp-pret-max" class="form-range"<%# bonus1 %>
                                                 min="<%= minPret %>" max="<%= maxPret %>" step="1"
                                                 value="<%= maxPret %>">
                                         </div>
@@ -132,28 +132,28 @@
                                         <label class="form-label d-block">Greutate estimată:</label>
 
                                         <% if (greutatiValabile.has("toate")) { %>
-                                            <input type="radio" class="btn-check" name="gr-greutate" id="greutate-toate"
+                                            <input type="radio" class="btn-check" name="gr-greutate" id="greutate-toate"<%# bonus1 %>
                                                 value="toate" checked autocomplete="off">
                                             <label class="btn btn-outline-info mb-2"
                                                 for="greutate-toate">Oricare</label>
                                             <% } %>
 
                                                 <% if (greutatiValabile.has("usor")) { %>
-                                                    <input type="radio" class="btn-check" name="gr-greutate"
+                                                    <input type="radio" class="btn-check" name="gr-greutate"<%# bonus1 %>
                                                         id="greutate-usor" value="usor" autocomplete="off">
                                                     <label class="btn btn-outline-info mb-2"
                                                         for="greutate-usor">Ușor</label>
                                                     <% } %>
 
                                                         <% if (greutatiValabile.has("mediu")) { %>
-                                                            <input type="radio" class="btn-check" name="gr-greutate"
+                                                            <input type="radio" class="btn-check" name="gr-greutate" <%# bonus1 %>
                                                                 id="greutate-mediu" value="mediu" autocomplete="off">
                                                             <label class="btn btn-outline-info mb-2"
                                                                 for="greutate-mediu">Mediu</label>
                                                             <% } %>
 
                                                                 <% if (greutatiValabile.has("greu")) { %>
-                                                                    <input type="radio" class="btn-check"
+                                                                    <input type="radio" class="btn-check" <%# bonus1 %>
                                                                         name="gr-greutate" id="greutate-greu"
                                                                         value="greu" autocomplete="off">
                                                                     <label class="btn btn-outline-info mb-2"
@@ -163,7 +163,7 @@
 
                                     <div class="col-12 mt-2">
                                         <% if (existaNou) { %>
-                                            <input type="checkbox" class="btn-check" id="inp-nou" autocomplete="off"
+                                            <input type="checkbox" class="btn-check" id="inp-nou" autocomplete="off" <%# bonus1 %>
                                                 value="da">
                                             <label class="btn btn-outline-warning" for="inp-nou">Afișează doar produsele
                                                 NOU apărute în stoc</label>
@@ -223,7 +223,7 @@
                                             </h3>
                                             <% if (parseFloat(prod.pret) === pretMinimCategorii[prod.categorie]) { %>
                                                 <div class="badge bg-success text-white mb-2 d-inline-block px-2 py-1 rounded">
-                                                    <i class="bi bi-tag-fill"></i> Cel mai ieftin din categoria sa!
+                                                    <i class="bi bi-tag-fill"></i> Cel mai ieftin din categoria sa!<%# bonus14 %>
                                                 </div>
                                             <% } %>
                                             <p><strong>Categorie:</strong> <span class="val-categorie">

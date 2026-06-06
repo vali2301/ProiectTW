@@ -190,11 +190,11 @@ app.get('/echipament/:id', async (req, res) => {
         const dateProdus = new Produs(rezultat.rows[0]);
 
         
-        const rezultatSimilare = await client.query(
+        const rezultatSimilare = await client.query(//bonus16
             'SELECT * FROM echipamente WHERE categorie = $1 AND id != $2 LIMIT 3',
             [dateProdus.categorie, idProdus]
         );
-        const produseSimilare = rezultatSimilare.rows.map(rand => new Produs(rand));
+        const produseSimilare = rezultatSimilare.rows.map(rand => new Produs(rand));//randuri in ob
 
         res.render('pagini/produs_unic', Object.assign({}, datePagina, { 
             produs: dateProdus,
